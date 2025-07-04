@@ -8,6 +8,8 @@ public class WeavusBankwebApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(WeavusBankwebApplication.class, args);
+        System.out.println("nice");
+
     }
 
 }
