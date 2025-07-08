@@ -18,7 +18,7 @@ create table accounts
 (
     id INT not null primary key auto_increment,
     user_id INT not null ,
-    number VARCHAR(12) not null ,
+    account_id VARCHAR(12) not null ,
     balance INT not null default 100000,
     password VARCHAR(20) not null ,
     purpose VARCHAR(255) not null ,
@@ -29,8 +29,8 @@ create table accounts
 create table transactions
 (
     id INT not null PRIMARY KEY AUTO_INCREMENT,
-    from_account_id INT not null ,
-    to_account_id INT not null ,
+    from_account_id VARCHAR(12) not null ,
+    to_account_id VARCHAR(12) not null ,
     type VARCHAR(2) not null ,
     amount INT not null ,
     date TIMESTAMP not null default CURRENT_DATE,
