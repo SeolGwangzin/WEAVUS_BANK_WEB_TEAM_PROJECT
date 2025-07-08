@@ -23,3 +23,26 @@ INSERT INTO users (
           '建物1 103号室',
           '01065234512'
          );
+
+
+INSERT INTO accounts (
+                      user_id, account_id, balance, password, purpose, create_date
+)VALUES(
+        1,
+        '123456789012',
+        100000,
+        '1234',
+        '給料お貰うため',
+        CURRENT_TIMESTAMP
+       );
+
+INSERT INTO accounts (
+    user_id, account_id, balance, password, purpose, create_date
+)VALUES(
+           1,
+           '223456789012',
+           100000,
+           '1234',
+           '給料お貰うため',
+           CURRENT_TIMESTAMP
+       );
