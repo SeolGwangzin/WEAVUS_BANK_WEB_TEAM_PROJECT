@@ -26,7 +26,7 @@ INSERT INTO users (
 
 
 INSERT INTO accounts (
-                      user_id, account_id, balance, password, purpose, create_date
+                      user_id, account_number, balance, password, purpose, create_date
 )VALUES(
         1,
         '123456789012',
@@ -37,7 +37,7 @@ INSERT INTO accounts (
        );
 
 INSERT INTO accounts (
-    user_id, account_id, balance, password, purpose, create_date
+    user_id, account_number, balance, password, purpose, create_date
 )VALUES(
            1,
            '223456789012',
