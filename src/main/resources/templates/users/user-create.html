@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>新規登録</title>
+</head>
+<style>
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: #f5f5f5;
+    }
+</style>
+<body style="text-align: center">
+<h1>新規登録</h1>
+<div class="container">
+    <form method="post" th:action="@{/register}">
+        <div>
+            <label for="username">ID:</label>
+            <input type="text" id="username" name="username">
+            <p id="checkUsernameMsg"></p>
+        </div>
+        <div>
+            <label for="password">PW:</label>
+            <input type="password" id="password" name="password">
+            <p id="checkPasswordMsg"></p>
+        </div>
+        <div>
+            <label>PW確認:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword">
+            <p id="confirmPasswordMsg"></p>
+        </div>
+        <div>
+            <label for="email">メール:</label>
+            <input type="email" id="email" name="email">
+            <p id="checkEmailMsg"></p>
+        </div>
+        <div>
+            <label for="last_name">姓:</label>
+            <input type="text" id="last_name" name="last_name">
+            <br>
+            <label for="first_name">名:</label>
+            <input type="text" id="first_name" name="first_name">
+            <p id="checkName"></p>
+        </div>
+        <div>
+            <label for="birth_date">生年月日:</label>
+            <input type="date" id="birth_date" name="birth_date">
+        </div>
+        <div>
+            <label for="gender">性別:</label>
+            <select name="gender" id="gender">
+                <option value="男" selected>男</option>
+                <option value="女">女</option>
+                <option value="その他">その他</option>
+            </select>
+        </div>
+        <div>
+            <label for="postal_code">郵便番号:</label>
+            <input type="text" id="postal_code" name="postal_code">
+            <p id="checkPostalCode"></p>
+        </div>
+        <div>
+            <label for="prefecture">都道府県:</label>
+            <input type="text" id="prefecture" name="prefecture">
+            <br>
+            <label for="city">市区町村:</label>
+            <input type="text" id="city" name="city">
+            <br>
+            <label>番地・建物名:</label>
+            <input type="text" id="address_detail" name="address_detail">
+        </div>
+        <div>
+            <label for="phone_number">電話番号:</label>
+            <input type="text" id="phone_number" name="phone_number">
+        </div>
+        <br>
+        <p id="checkInput"></p>
+
+        <div>
+            <button type="submit">新規登録</button>
+            <a th:href="@{/login}">ホームに戻る</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>
