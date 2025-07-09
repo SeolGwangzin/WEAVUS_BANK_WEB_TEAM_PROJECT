@@ -4,7 +4,5 @@ import lombok.Data;
 
 @Data
 public class TransactionsDTO {
-    int fromAccountId;
-    int toAccountId;
-    int money;
+
 }

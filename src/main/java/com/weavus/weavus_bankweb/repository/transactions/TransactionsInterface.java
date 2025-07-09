@@ -10,20 +10,20 @@ public interface TransactionsInterface {
 
     //거래내역 추가
     @Insert("""
-    INSERT into transactions (from_account_id, to_acoount_id, type,
-                              amount, note)
-    values (#{fromAccountId}, #{toAccountId}, #{type},
-            #{amount}, #{note})
-""")
+    INSERT into transactions (from_account_number, to_account_number, type,
+                              amount, note, balance)
+    values (#{fromAccountNumber}, #{toAccountNumber}, #{type},
+            #{amount}, #{note}, #{balance})
+    """)
     @Options(useGeneratedKeys = true, keyProperty = "id")
     void insertTransaction(TransactionsEntity transaction);
 
     //지정된 계좌의 전체 거래내역
     @Select("""
         SELECT * FROM transactions where 
-                                    (from_account_id = #{accountId} AND type = '出金') 
+                                    (from_account_number = #{accountNumber} AND type = '出金') 
                                     OR 
-                                    (to_acoount_id = #{accountId} AND type = '入金') 
+                                    (to_account_number = #{accountNumber} AND type = '入金') 
         """)
-    List<TransactionsEntity> findAll(int accountId);
+    List<TransactionsEntity> findAll(String accountNumber);
 }

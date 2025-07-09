@@ -14,10 +14,11 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class TransactionsEntity {
     private int id;
-    private String fromAccountId;
-    private String toAccountId;
+    private String fromAccountNumber;
+    private String toAccountNumber;
     private String type;        // "入金", "出金"  二つで選択
-    private int amount;
+    private Integer amount;
     private LocalDateTime date;
     private String note;
+    private Integer balance;
 }
