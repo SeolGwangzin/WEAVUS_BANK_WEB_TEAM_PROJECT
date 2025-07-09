@@ -13,7 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AccountsService {
 
-    private final AccountsInterface accountMapper;
+    private final AccountsInterface accountsInterface;
 
     //계좌번호 생성
     private String generateAccountNumber() {
@@ -37,27 +37,26 @@ public class AccountsService {
         String accountNumber = "";
         while (true) {
             accountNumber = generateAccountNumber();
-            if (accountMapper.findAccountAll(accountNumber) == null){
+            if (accountsInterface.findAccountAll(accountNumber) == null){
                 break;
             }
         }
         account.setAccountNumber(accountNumber);
         account.setBalance(100000); //基本に入れる。
-        accountMapper.insertAccount(account);
+        accountsInterface.insertAccount(account);
     }
 
-    //특정 유저 계좌 정보 전부 가져옴
     public List<AccountsEntity> getAllAccounts(int userId) {
-        return accountMapper.findAll(userId);
+        return accountsInterface.findAll(userId);
     }
 
     //특정 유저 계좌 번호만 가져옴
     public List<String> getAllAccount(int userId) {
-        return accountMapper.findAccountNum(userId);
+        return accountsInterface.findAccountNum(userId);
     }
 
     //계좌번호로 찾기
     public AccountsEntity getAccount(String accountNumber) {
-        return accountMapper.findAccountAll(accountNumber);
+        return accountsInterface.findAccountAll(accountNumber);
     }
 }
