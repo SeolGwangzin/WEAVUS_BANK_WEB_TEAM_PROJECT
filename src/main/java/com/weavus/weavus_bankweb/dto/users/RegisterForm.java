@@ -1,15 +1,14 @@
-package com.weavus.weavus_bankweb.entity.users;
-
-import lombok.Data;
+package com.weavus.weavus_bankweb.dto.users;
 
 import java.time.LocalDate;
 
-public class UsersEntity {
-    private int id;
+public class RegisterForm {
+    private Long id;
     private String username;
     private String password;
     private String email;
-    private String full_name;
+    private String first_name;
+    private String last_name;
     private LocalDate birth_date;
     private String gender;
     private String postal_code;
@@ -18,11 +17,11 @@ public class UsersEntity {
     private String address_detail;
     private String phone_number;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -48,14 +47,6 @@ public class UsersEntity {
 
     public String getEmail() {
         return email;
-    }
-
-    public String getFull_name() {
-        return full_name;
-    }
-
-    public void setFull_name(String full_name) {
-        this.full_name = full_name;
     }
 
     public LocalDate getBirth_date() {
@@ -112,5 +103,21 @@ public class UsersEntity {
 
     public void setPhone_number(String phone_number) {
         this.phone_number = phone_number;
+    }
+
+    public String getFirst_name() {
+        return first_name;
+    }
+
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
+    }
+
+    public String getLast_name() {
+        return last_name;
+    }
+
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
     }
 }

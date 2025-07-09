@@ -12,15 +12,15 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AccountsService {
 
-    private final AccountsInterface accountMapper;
+    private final AccountsInterface accountsInterface;
 
     public void createAccount(AccountsEntity account) {
         account.setBalance(100000);
         account.setCreateDate(LocalDateTime.now());
-        accountMapper.insertAccount(account);
+        accountsInterface.insertAccount(account);
     }
 
-    public List<AccountsEntity> getAllAccounts() {
-        return accountMapper.findAll();
+    public List<AccountsEntity> getAllAccounts(int userId) {
+        return accountsInterface.findAll(userId);
     }
 }

@@ -28,7 +28,7 @@ public class TransactionsService {
         //보내는 계좌의 잔금 수정
         int fromBalance = accountsInterface.findBalanceByAccountId(transactionsEntity.getFromAccountId()) - transactionsEntity.getAmount();
         AccountsEntity formAccounts = AccountsEntity.builder()
-                .accountId(transactionsEntity.getFromAccountId())
+                .accountNumber(transactionsEntity.getFromAccountId())
                 .balance(fromBalance)
                 .build();
         accountsInterface.updateBalance(formAccounts);
@@ -42,7 +42,7 @@ public class TransactionsService {
         //받는 계좌의 잔금 수정
         int toBalance = accountsInterface.findBalanceByAccountId(transactionsEntity.getToAccountId()) + transactionsEntity.getAmount();
         AccountsEntity toAccounts = AccountsEntity.builder()
-                .accountId(transactionsEntity.getToAccountId())
+                .accountNumber(transactionsEntity.getToAccountId())
                 .balance(toBalance)
                 .build();
         accountsInterface.updateBalance(toAccounts);

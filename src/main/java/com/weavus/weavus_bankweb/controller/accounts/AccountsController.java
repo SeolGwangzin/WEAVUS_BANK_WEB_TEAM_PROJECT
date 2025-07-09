@@ -29,9 +29,9 @@ public class AccountsController {
     }
 
     // 계좌 목록 보여주기 (GET /account/list)
-    @GetMapping("/list")
-    public String listAccounts(Model model) {
-        model.addAttribute("accounts", accountsService.getAllAccounts());
-        return "accounts/list";
-    }
+//    @GetMapping("/list")
+//    public String listAccounts(Model model) {
+//        model.addAttribute("accounts", accountsService.getAllAccounts());
+//        return "accounts/list";
+//    }
 }

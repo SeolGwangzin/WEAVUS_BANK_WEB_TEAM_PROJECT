@@ -19,7 +19,7 @@ public interface AccountsInterface {
         //모든 계좌 정보 불러오기
         //@Select("SELECT * FROM accounts where account_id = #{accountId}")
         @Select("SELECT * FROM accounts where user_id = #{userId}")
-        List<AccountsEntity> findAll();
+        List<AccountsEntity> findAll(int userId);
 
         //지정 계좌 정보 불러오기
         @Select("SELECT * FROM accounts where account_id = #{accountId}")

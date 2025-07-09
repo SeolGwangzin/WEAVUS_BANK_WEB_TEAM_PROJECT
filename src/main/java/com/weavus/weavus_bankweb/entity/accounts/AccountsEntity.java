@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class AccountsEntity {
     private int id;            
     private int userId;
-    private String accountId;
+    private String accountNumber;
     private int balance;
     private String password;
     private String purpose;
