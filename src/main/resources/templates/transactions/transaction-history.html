@@ -1,20 +1,246 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>取引の履歴</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            margin: 0;
+            background-color: #f4f7f9;
+            color: #333;
+        }
+        .page-container {
+            max-width: 900px;
+            margin: 3em auto;
+            padding: 2.5em;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        h2 {
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 1.5em;
+            font-size: 24px;
+            color: #2c3e50;
+            padding-bottom: 0.5em;
+            border-bottom: 2px solid #e0e0e0;
+            font-weight: 700;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15px;
+        }
+        thead th {
+            font-weight: 500;
+            padding: 12px;
+            background-color: #f8f9fa;
+        }
+        tbody td {
+            padding: 12px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+        .no-data, #no-results-row td {
+            text-align: center;
+            padding: 3em 0;
+            color: #777;
+        }
+        .account-summary {
+            background-color: #eef5ff;
+            border-left: 5px solid #007bff;
+            padding: 15px 20px;
+            margin-bottom: 2em;
+            border-radius: 8px;
+        }
+        .account-summary p {
+            margin: 8px 0;
+            font-size: 16px;
+            color: #333;
+        }
+        .account-summary p strong {
+            font-weight: 500;
+            color: #0056b3;
+            min-width: 100px;
+            display: inline-block;
+        }
+        td .withdrawal { color: #d9534f; font-weight: 500; }
+        td .deposit { color: #5cb85c; font-weight: 500; }
+
+        /* ✅ 필터 버튼 CSS */
+        .filter-container {
+            position: relative;
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 1.5em;
+        }
+        .filter-btn {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 15px;
+            min-width: 100px;
+        }
+        .filter-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            z-index: 10;
+            list-style: none;
+            padding: 5px 0;
+            margin: 5px 0 0 0;
+        }
+        .filter-dropdown li { padding: 10px 20px; cursor: pointer; }
+        .filter-dropdown li:hover { background-color: #f4f7f9; }
+        .filter-dropdown.show { display: block; }
+    </style>
 </head>
 <body>
-<h2>口座一覧</h2>
-<table>
-    <tr>
-        <th>口座番号</th><th>残高</th><th>目的</th>
-    </tr>
-    <tr th:each="acc : ${accounts}">
-        <td th:text="${acc.number}"></td>
-        <td th:text="${acc.balance}"></td>
-        <td th:text="${acc.purpose}"></td>
-    </tr>
-</table>
+<div th:replace="~{navbar/navbar :: navbarFragment}"></div>
+<div class="page-container">
+    <h2>取引の履歴</h2>
+
+    <div class="account-summary" th:if="${account != null}">
+        <p>
+            <strong>口座番号:</strong>
+            <span id="account-number" th:text="${account.accountNumber}">123456789012</span>
+        </p>
+        <p>
+            <strong>最終残高:</strong>
+            <span th:text="${#numbers.formatInteger(account.balance, 0, 'COMMA')} + '円'">1,000,000円</span>
+        </p>
+    </div>
+
+    <div class="filter-container">
+        <button id="filter-btn" class="filter-btn">全体</button>
+        <ul id="filter-dropdown" class="filter-dropdown">
+            <li data-filter="all">全体</li>
+            <li data-filter="入金">入金</li>
+            <li data-filter="出金">出金</li>
+        </ul>
+    </div>
+
+    <div th:if="${trans == null or trans.isEmpty()}">
+        <p class="no-data">取引の履歴がありません。</p>
+    </div>
+
+    <table th:if="${trans != null and not trans.isEmpty()}">
+        <thead>
+        <tr>
+            <th>取引日</th>
+            <th>取引種類</th>
+            <th>取引金額</th>
+            <th>備考</th>
+            <th>残高</th>
+        </tr>
+        </thead>
+        <tbody id="transaction-table-body">
+        <tr th:each="transaction : ${trans}">
+            <td th:text="${#temporals.format(transaction.date, 'yyyy-MM-dd HH:mm')}"></td>
+            <td>
+                <span class="transaction-type" th:classappend="${transaction.type == '出金' ? 'withdrawal' : 'deposit'}" th:text="${transaction.type}"></span>
+            </td>
+            <td th:text="${#numbers.formatInteger(transaction.amount, 0, 'COMMA')} + '円'"></td>
+            <td th:text="${transaction.note}"></td>
+            <td th:text="${#numbers.formatInteger(transaction.balance, 0, 'COMMA')} + '円'"></td>
+        </tr>
+        <tr id="no-results-row" style="display: none;">
+            <td colspan="5">該当する取引の履歴がありません。</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        /* --- 1. 계좌번호 서식 및 마스킹 기능 --- */
+        function formatAccountNumber(numberStr) {
+            if (!numberStr) return '';
+            return numberStr.replace(/(\d{4})(?=\d)/g, '$1-');
+        }
+
+        const accountNumberSpan = document.getElementById('account-number');
+        if (accountNumberSpan) {
+            const originalNumber = accountNumberSpan.textContent;
+            if (originalNumber.length > 4) {
+                const partToKeep = originalNumber.substring(0, originalNumber.length - 4);
+                const formattedPart = formatAccountNumber(partToKeep);
+                const finalDisplay = formattedPart + '-****';
+                accountNumberSpan.textContent = finalDisplay;
+            } else {
+                accountNumberSpan.textContent = formatAccountNumber(originalNumber);
+            }
+        }
+
+        /* --- 2. 거래 내역 필터링 기능 --- */
+        const filterBtn = document.getElementById('filter-btn');
+        const filterDropdown = document.getElementById('filter-dropdown');
+        const tableBody = document.getElementById('transaction-table-body');
+
+        // tableBody가 없는 경우(거래내역이 0건) 스크립트 실행 중단
+        if (!tableBody) return;
+
+        const allRows = tableBody.querySelectorAll('tr:not(#no-results-row)');
+        const noResultsRow = document.getElementById('no-results-row');
+
+        filterBtn.addEventListener('click', function() {
+            filterDropdown.classList.toggle('show');
+        });
+
+        filterDropdown.addEventListener('click', function(event) {
+            if (event.target.tagName === 'LI') {
+                const filterValue = event.target.getAttribute('data-filter');
+                filterBtn.textContent = event.target.textContent;
+                filterDropdown.classList.remove('show');
+                let visibleRowCount = 0;
+
+                allRows.forEach(function(row) {
+                    const typeSpan = row.querySelector('.transaction-type');
+                    if (!typeSpan) return;
+
+                    if (filterValue === 'all' || typeSpan.textContent === filterValue) {
+                        row.style.display = '';
+                        visibleRowCount++;
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+
+                if (visibleRowCount === 0) {
+                    noResultsRow.style.display = 'table-row';
+                } else {
+                    noResultsRow.style.display = 'none';
+                }
+            }
+        });
+
+        window.addEventListener('click', function(event) {
+            if (!filterBtn.contains(event.target)) {
+                filterDropdown.classList.remove('show');
+            }
+        });
+    });
+</script>
+
 </body>
 </html>

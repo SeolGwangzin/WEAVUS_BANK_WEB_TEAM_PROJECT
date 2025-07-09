@@ -1,0 +1,24 @@
+<nav class="navbar" th:fragment="navbarFragment">
+
+  <a href="/" class="logo-link">
+    <img th:src="@{/image/logo.png}" alt="WEAVUS BANK Logo">
+  </a>
+
+  <a href="/account/open" class="nav-item">口座開設</a>
+  <a href="/transfer" class="nav-item">振込</a>
+
+  <a href="/login" class="nav-item">LOGIN</a>
+  <a href="/register" class="nav-item">会員登録</a>
+
+    <!--    <div th:if="${isLoggedIn}">-->
+    <!--      <a href="/mypage" class="nav-item">MYPAGE</a>-->
+    <!--      <a href="/logout" class="nav-item">LOGOUT</a>-->
+    <!--    </div>-->
+
+    <!--    <div th:unless="${isLoggedIn}">-->
+    <!--      <a href="/login" class="nav-item">LOGIN</a>-->
+    <!--      <a href="/register" class="nav-item">会員登録</a>-->
+    <!--    </div>-->
+
+</nav>
+
