@@ -1,9 +1,11 @@
 package com.weavus.weavus_bankweb.entity.users;
 
+import lombok.Data;
+
 import java.time.LocalDate;
 
 public class UsersEntity {
-    private Long id;
+    private int id;
     private String username;
     private String password;
     private String email;
@@ -16,11 +18,11 @@ public class UsersEntity {
     private String address_detail;
     private String phone_number;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

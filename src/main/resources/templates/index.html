@@ -9,13 +9,37 @@
 <h1>銀行システムメイン画面</h1>
 <h2>ようこそ、<span th:text="${名前}">名前</span>様！</h2>
 
-<div>
-    <label>口座番号:</label>
-    <select>
-        <option></option>
-        <option></option>
-        <option></option>
+<!-- 口座を持ってる場合 -->
+<div th:if="${accounts != null and !accounts.isEmpty()}">
+    <label>口座を選択：</label>
+    <select id="accountSelect" name="accountId" onchange="onAccountChange(this)">
+        <option th:each="acc : ${accounts}"
+                th:text="${acc.getAccountNumber()}"
+                th:data-balance="${acc.getBalance()}"
+                th:value="${acc.getId()}"></option>
     </select>
+
+    <p>現在の残高：<span id="balanceDisplay"></span></p>
 </div>
+<!-- 口座を持ってない場合 -->
+<div th:if="${accounts == null or accounts.isEmpty()}">
+    <a th:href="@{/new}">新しい口座を作ってください</a>
+</div>
+
+<script>
+    function onAccountChange(selectElement) {
+        const selectedOption = selectElement.options[selectElement.selectedIndex];
+        const balance = selectedOption.getAttribute("data-balance");
+        const formattedBalance = Number(balance).toLocaleString();
+        document.getElementById("balanceDisplay").textContent = formattedBalance + '円';
+    }
+
+    window.addEventListener("DOMContentLoaded", function () {
+        const select = document.getElementById("accountSelect");
+        if (select) {
+            onAccountChange(select);
+        }
+    })
+</script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-package com.weavus.weavus_bankweb;
+package com.weavus.weavus_bankweb.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

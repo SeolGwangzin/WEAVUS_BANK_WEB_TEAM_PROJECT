@@ -2,7 +2,9 @@ package com.weavus.weavus_bankweb.controller.users;
 
 import com.weavus.weavus_bankweb.dto.users.LoginForm;
 import com.weavus.weavus_bankweb.dto.users.RegisterForm;
+import com.weavus.weavus_bankweb.entity.accounts.AccountsEntity;
 import com.weavus.weavus_bankweb.entity.users.UsersEntity;
+import com.weavus.weavus_bankweb.service.accounts.AccountsService;
 import com.weavus.weavus_bankweb.service.users.UsersService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -11,10 +13,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 @RequiredArgsConstructor
 public class UsersController {
     private final UsersService usersService;
+    private final AccountsService accountsService;
     @GetMapping("/login")
     public String showLoginPage() {
         return "users/user-login";
@@ -32,6 +37,10 @@ public class UsersController {
         if (loginUser == null) {
             return "redirect:/login";
         }
+
+        List<AccountsEntity> accounts = accountsService.getAllAccounts(loginUser.getId());
+
+        model.addAttribute("accounts" ,accounts);
         model.addAttribute("名前", loginUser.getFull_name());
         return "index";
     }
