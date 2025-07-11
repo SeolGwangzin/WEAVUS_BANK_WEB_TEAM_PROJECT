@@ -113,6 +113,7 @@
         .filter-dropdown li:hover { background-color: #f4f7f9; }
         .filter-dropdown.show { display: block; }
     </style>
+
 </head>
 <body>
 <div th:replace="~{navbar/navbar :: navbarFragment}"></div>
@@ -122,7 +123,7 @@
     <div class="account-summary" th:if="${account != null}">
         <p>
             <strong>口座番号:</strong>
-            <span id="account-number" th:text="${account.accountNumber}">123456789012</span>
+            <span id="account-number" th:text="${account.account_number}">123456789012</span>
         </p>
         <p>
             <strong>最終残高:</strong>
@@ -173,7 +174,6 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
 
-        /* --- 1. 계좌번호 서식 및 마스킹 기능 --- */
         function formatAccountNumber(numberStr) {
             if (!numberStr) return '';
             return numberStr.replace(/(\d{4})(?=\d)/g, '$1-');
@@ -192,12 +192,10 @@
             }
         }
 
-        /* --- 2. 거래 내역 필터링 기능 --- */
         const filterBtn = document.getElementById('filter-btn');
         const filterDropdown = document.getElementById('filter-dropdown');
         const tableBody = document.getElementById('transaction-table-body');
 
-        // tableBody가 없는 경우(거래내역이 0건) 스크립트 실행 중단
         if (!tableBody) return;
 
         const allRows = tableBody.querySelectorAll('tr:not(#no-results-row)');

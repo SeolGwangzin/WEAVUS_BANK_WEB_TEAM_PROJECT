@@ -1,10 +1,10 @@
 package com.weavus.weavus_bankweb.controller.transactions;
 
-import com.weavus.weavus_bankweb.dto.transactions.TransactionsDTO;
-import com.weavus.weavus_bankweb.entity.accounts.AccountsEntity;
 import com.weavus.weavus_bankweb.entity.transactions.TransactionsEntity;
+import com.weavus.weavus_bankweb.entity.users.UsersEntity;
 import com.weavus.weavus_bankweb.service.accounts.AccountsService;
 import com.weavus.weavus_bankweb.service.transactions.TransactionsService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,16 +26,15 @@ public class TransactionsController {
     @GetMapping("/list")
     public String transactionList(@RequestParam("accountNumber") String accountNumber, Model model) {
             model.addAttribute("trans", transactionsService.getAllTransaction(accountNumber));
-            System.out.println(accountNumber + " / " + accountsService.getAccount(accountNumber).getBalance() + "asdasdad" + accountsService.getAccount(accountNumber).getAccountNumber() + " / " + accountsService.getAccount(accountNumber).getPurpose());
             model.addAttribute("account", accountsService.getAccount(accountNumber));
             return "transactions/transaction-history";
     }
 
     //이체 화면 이동
     @GetMapping("/create")
-    public String createTransactionForm(Model model) {
-        List<String> accountList = new ArrayList<>();
-        accountList = accountsService.getAllAccount(1); //유저 기능이 없어 임시로 하드코딩해둠
+    public String createTransactionForm(HttpSession session, Model model) {
+        System.out.println(((UsersEntity) session.getAttribute("loginUser")).getId() + "sadasdadad");
+        List<String> accountList = accountsService.getAllAccount(((UsersEntity) session.getAttribute("loginUser")).getId());
 
         model.addAttribute("transaction", new TransactionsEntity());
         model.addAttribute("accountList", accountList);
@@ -59,7 +58,7 @@ public class TransactionsController {
             return "redirect:/trans/create";
         }
         //성공
-        return "redirect:/trans/list?accountNumber=" + transaction.getFromAccountNumber();
+        return "redirect:/trans/list?accountNumber=" + transaction.getFrom_account_number();
     }
 
 

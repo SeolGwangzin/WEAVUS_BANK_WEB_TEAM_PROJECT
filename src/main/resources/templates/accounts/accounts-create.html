@@ -1,16 +1,143 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>口座登録</title>
+    <style>
+        .modal-overlay {
+            display: none; /* ✅ 핵심: 이 속성만 남겨두어 기본적으로 숨깁니다. */
+
+            /* 화면 전체를 덮는 반투명 배경 */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+
+            /* 모달 창을 화면 중앙에 위치시키기 위한 설정 */
+            /* display: flex; <<<< ❌ 이 줄을 삭제하거나 주석 처리해야 합니다. */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 25px 35px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 90%;
+            max-width: 400px; /* 모달의 최대 너비 */
+        }
+
+        .modal-content p {
+            margin: 0 0 20px 0; /* 메시지와 버튼 사이의 간격 */
+            font-size: 16px;
+            color: #333;
+        }
+
+        .modal-content button {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .modal-content button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <form action="/account/create" method="post">
-    ユーザーID: <input type="text" name="userId" /><br/>
-    番号: <input type="text" name="number" /><br/>
-    パスワード: <input type="text" name="password" /><br/>
-    目的: <input type="text" name="purpose" /><br/>
-    <button type="submit">登録</button>
-</form>
+<div class="container">
+    <h2>口座登録</h2>
+
+    <form th:action="@{/accounts/create}" th:object="${account}" method="post">
+
+        <fieldset class="user-info" th:if="${loginUser != null}">
+            <legend>お客様情報</legend>
+            <p>
+                <strong>お名前:</strong>
+                <span th:text="${loginUser.full_name}">山田 太郎</span>
+            </p>
+            <p>
+                <strong>メールアドレス:</strong>
+                <span th:text="${loginUser.email}">test@example.com</span>
+            </p>
+            <p>
+                <strong>生年月日:</strong>
+                <span th:text="${#temporals.format(loginUser.birth_date, 'yyyy-MM-dd')}">2000-01-01</span>
+            </p>
+            <p>
+                <strong>郵便番号:</strong>
+                <span th:text="${loginUser.postal_code}">123-4567</span>
+            </p>
+            <p>
+                <strong>電話番号:</strong>
+                <span th:text="${loginUser.phone_number}">090-1234-5678</span>
+            </p>
+        </fieldset>
+
+        <input type="hidden" name="userId" th:value="${loginUser.id}" />
+
+        <fieldset>
+            <legend>口座情報入力</legend>
+            <div class="form-group">
+                <label for="password">パスワード:</label>
+                <input id="password" type="password" th:field="*{password}" required />
+            </div>
+            <div class="form-group">
+                <label for="passwordCheck">パスワード確認:</label>
+                <input id="passwordCheck" type="password" name="passwordCheck" required />
+            </div>
+            <div class="form-group">
+                <label for="purpose">目的:</label>
+                <input id="purpose" type="text" th:field="*{purpose}" required />
+            </div>
+        </fieldset>
+
+        <button type="submit">登録</button>
+    </form>
+</div>
+
+<!--에러 모달팝업용 스크립트-->
+<script th:inline="javascript">
+
+    // 모달 관련 HTML 요소를 가져옴
+    const modal = document.getElementById('error-modal');
+    const modalMessage = document.getElementById('modal-message');
+    const closeBtn = document.getElementById('modal-close-btn');
+
+    // 서버에서 전달된 'errorMessage' 값을 가져옴
+    const errorMessage = /*[[${errorMessage}]]*/ null;
+
+    // errorMessage가 존재할 경우 모달을 띄움
+    if (errorMessage) {
+        // 메시지 설정
+        modalMessage.textContent = errorMessage;
+        // 모달 보이기 (CSS의 display 속성을 'flex'로 변경)
+        modal.style.display = 'flex';
+    }
+
+    // '확인' 버튼을 누르면 모달을 닫음
+    closeBtn.addEventListener('click', function() {
+        modal.style.display = 'none';
+    });
+
+    // 모달 바깥의 회색 영역을 클릭하면 모달을 닫음
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+
+</script>
+
 </body>
 </html>
