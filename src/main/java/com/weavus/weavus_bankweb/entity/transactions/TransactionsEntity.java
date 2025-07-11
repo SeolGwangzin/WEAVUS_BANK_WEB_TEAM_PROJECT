@@ -1,6 +1,5 @@
 package com.weavus.weavus_bankweb.entity.transactions;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,8 +13,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class TransactionsEntity {
     private int id;
-    private String fromAccountNumber;
-    private String toAccountNumber;
+    private String from_account_number;
+    private String to_account_number;
     private String type;        // "入金", "出金"  二つで選択
     private Integer amount;
     private LocalDateTime date;

@@ -24,7 +24,6 @@ INSERT INTO users (
           '01065234512'
          );
 
-
 INSERT INTO accounts (
                       user_id, account_number, balance, password, purpose
 )VALUES(

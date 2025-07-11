@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -15,9 +14,9 @@ public class AccountsService {
 
     private final AccountsInterface accountsInterface;
 
-    //계좌번호 생성
+    //口座番号をランダムで作る。
     private String generateAccountNumber() {
-        // 12자리 랜덤 제작
+        // 12のみ桁数
         SecureRandom random = new SecureRandom();
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 12; i++) {
@@ -31,17 +30,32 @@ public class AccountsService {
         return sb.toString();
     }
 
-    //계좌 생성
-    public void createAccount(AccountsEntity account) {
-        //계좌번호를 저장할 객체
+    //口座開設
+    public void createAccount(AccountsEntity account, String passwordCheck) {
+        //口座番号を入れる変数
         String accountNumber = "";
-        while (true) {
+
+        //同じ口座番号がある場合。
+        do {
             accountNumber = generateAccountNumber();
-            if (accountsInterface.findAccountAll(accountNumber) == null){
-                break;
-            }
+        } while (accountsInterface.findAccountAll(accountNumber) != null);
+
+        if(accountsInterface.findAll(account.getUser_id()).size() == 2){
+            throw new IllegalArgumentException("口座がも二つあります。");
+
         }
-        account.setAccountNumber(accountNumber);
+
+        if(account.getPassword().length() < 4 ||  account.getPassword().length() > 8){
+            throw new IllegalArgumentException("口座番号の桁数は4~8の間にしてください。");
+        }
+
+        //PASSWORDとPASSWORD確認が間違った場合
+        if(!account.getPassword().equals(passwordCheck)){
+            throw new IllegalArgumentException("PASSWORDとPASSWORD確認が違います。");
+        }
+
+        account.setAccount_number(accountNumber);
+        account.setUser_id(account.getUser_id());
         account.setBalance(100000); //基本に入れる。
         accountsInterface.insertAccount(account);
     }
