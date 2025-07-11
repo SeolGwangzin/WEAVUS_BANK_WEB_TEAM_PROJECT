@@ -29,8 +29,8 @@ public class TransTest {
     //ERROR TEST
     void transErrorTest(){
         TransactionsEntity transactionsEntity = TransactionsEntity.builder()
-                .fromAccountNumber("223456789012")
-                .toAccountNumber("223456789012")
+                .from_account_number("223456789012")
+                .to_account_number("223456789012")
                 .amount(10000)
                 .note("TEST")
                 .build();
@@ -49,7 +49,7 @@ public class TransTest {
 
         //口座番号先が間違った場合
         e = assertThrows(IllegalArgumentException.class, () -> {
-            transactionsEntity.setToAccountNumber("333333333333");
+            transactionsEntity.setTo_account_number("333333333333");
             transService.createTransaction(transactionsEntity, "1234");
         });
         System.out.println("error メッセージ: " + e.getMessage());
@@ -59,8 +59,8 @@ public class TransTest {
     //振込テスト
     void transTest(){
         TransactionsEntity transactionsEntity = TransactionsEntity.builder()
-                .fromAccountNumber("123456789012")
-                .toAccountNumber("223456789012")
+                .from_account_number("123456789012")
+                .to_account_number("223456789012")
                 .amount(10000)
                 .note("TEST")
                 .build();

@@ -27,8 +27,8 @@ public class TransMockTest {
     void testMock() {
         TransactionsEntity transactionsEntity1 = TransactionsEntity.builder()
                 .id(1)
-                .fromAccountNumber("123456789012")
-                .toAccountNumber("223456789012")
+                .from_account_number("123456789012")
+                .to_account_number("223456789012")
                 .type("出金")
                 .amount(10000)
                 .note("テスト１")
@@ -37,8 +37,8 @@ public class TransMockTest {
 
         TransactionsEntity transactionsEntity2 = TransactionsEntity.builder()
                 .id(3)
-                .fromAccountNumber("223456789012")
-                .toAccountNumber("123456789012")
+                .from_account_number("223456789012")
+                .to_account_number("123456789012")
                 .type("入金")
                 .amount(5000)
                 .note("テスト２")
