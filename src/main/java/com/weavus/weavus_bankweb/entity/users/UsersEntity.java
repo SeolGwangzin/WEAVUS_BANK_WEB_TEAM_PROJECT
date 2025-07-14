@@ -1,7 +1,5 @@
 package com.weavus.weavus_bankweb.entity.users;
 
-import lombok.Data;
-
 import java.time.LocalDate;
 
 public class UsersEntity {
