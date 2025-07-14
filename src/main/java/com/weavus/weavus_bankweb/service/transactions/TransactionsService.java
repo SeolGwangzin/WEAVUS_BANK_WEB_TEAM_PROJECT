@@ -18,22 +18,21 @@ public class TransactionsService {
     private final AccountsInterface accountsInterface;
     private final TransactionsInterface transactionsInterface;
 
-    //특정계좌 거래내역 불러오기
+    //特定口座の履歴を
     public List<TransactionsEntity> getAllTransaction(String accountNumber) {
-        List<TransactionsEntity> trans = transactionsInterface.findAll(accountNumber);
-        return trans;
+        return transactionsInterface.findAll(accountNumber);
     }
 
-    //거래내역 추가
-    @Transactional  //중간에 오류가 나면 전부 전체 실행 되돌린다.
+    //取引履歴を追加
+    @Transactional  //エラーが発生したら戻る。
     public void createTransaction(TransactionsEntity transactionsEntity, String password) {
         int transferAmount = transactionsEntity.getAmount();
 
-        //입력하지 않거나 잘못입력한 정보가 있는지 확인
-        if (!StringUtils.hasText(transactionsEntity.getToAccountNumber())) {
+        //入力されなかったり間違って入力した情報があるか検査する。
+        if (!StringUtils.hasText(transactionsEntity.getTo_account_number())) {
             throw new IllegalArgumentException("入出金口座を入力してください。");
         }
-        if (transactionsEntity.getToAccountNumber().equals(transactionsEntity.getFromAccountNumber())) {
+        if (transactionsEntity.getTo_account_number().equals(transactionsEntity.getFrom_account_number())) {
             throw new IllegalArgumentException("入出金口座が同じです。");
         }
         if (transactionsEntity.getAmount() == null || transactionsEntity.getAmount() <= 0) {
@@ -43,9 +42,9 @@ public class TransactionsService {
             throw new IllegalArgumentException("口座PASSWORDを入力してください。");
         }
 
-        // 받는 계좌가 DB에 있는지 조회.
-        AccountsEntity fromAccount = accountsInterface.findAccountAll(transactionsEntity.getFromAccountNumber());
-        AccountsEntity toAccount = accountsInterface.findAccountAll(transactionsEntity.getToAccountNumber());
+        // 貰う口座の情報がdatabaseにあるか照会する。
+        AccountsEntity fromAccount = accountsInterface.findAccountAll(transactionsEntity.getFrom_account_number());
+        AccountsEntity toAccount = accountsInterface.findAccountAll(transactionsEntity.getTo_account_number());
 
         if(fromAccount == null){
             throw new IllegalArgumentException("出金口座が存在しません");
@@ -66,36 +65,41 @@ public class TransactionsService {
         }
 
         // 출금 계좌의 잔액 수정
-        int fromBalance = accountsInterface.findBalanceByBalanceId(transactionsEntity.getFromAccountNumber()) - transferAmount;
-        fromAccount.setBalance(fromAccount.getBalance() - transferAmount);
-        accountsInterface.updateBalance(fromAccount);
+        int fromBalance = accountsInterface.findBalanceByBalanceId(transactionsEntity.getFrom_account_number()) - transferAmount;
+        fromAccount.setBalance(fromBalance);
+        accountsInterface.updateBalance(fromAccount.getAccount_number(), fromBalance);
 
         // 보내는 쪽(출금) 거래내역 추가
-        TransactionsEntity withdrawalTransaction = TransactionsEntity.builder()
-                .fromAccountNumber(transactionsEntity.getFromAccountNumber())
-                .toAccountNumber(transactionsEntity.getToAccountNumber())
+        TransactionsEntity fromTransaction = TransactionsEntity.builder()
+                .from_account_number(transactionsEntity.getFrom_account_number())
+                .to_account_number(transactionsEntity.getTo_account_number())
                 .type("出金")
                 .amount(transferAmount)
                 .note(transactionsEntity.getNote())
                 .balance(fromBalance)
                 .build();
-        transactionsInterface.insertTransaction(withdrawalTransaction);
+       if(1 != transactionsInterface.insertTransaction(fromTransaction)){
+           throw new IllegalArgumentException("口座開設が失敗しました。");
+       };
 
         // 받는 계좌의 잔액 수정
-        int toBalance = accountsInterface.findBalanceByBalanceId(transactionsEntity.getToAccountNumber()) + transferAmount;
-        toAccount.setBalance(toAccount.getBalance() - transferAmount);
-        accountsInterface.updateBalance(toAccount);
+        int toBalance = accountsInterface.findBalanceByBalanceId(transactionsEntity.getTo_account_number()) + transferAmount;
+        toAccount.setBalance(toBalance);
+        accountsInterface.updateBalance(toAccount.getAccount_number(), toBalance);
 
         // 받는 쪽(입금) 거래내역 추가
-        TransactionsEntity depositTransaction = TransactionsEntity.builder()
-                .fromAccountNumber(transactionsEntity.getFromAccountNumber())
-                .toAccountNumber(transactionsEntity.getToAccountNumber())
+        TransactionsEntity toTransaction = TransactionsEntity.builder()
+                .from_account_number(transactionsEntity.getFrom_account_number())
+                .to_account_number(transactionsEntity.getTo_account_number())
                 .type("入金")
                 .amount(transferAmount)
                 .note(transactionsEntity.getNote())
                 .balance(toBalance)
                 .build();
-        transactionsInterface.insertTransaction(depositTransaction);
+        if(1 != transactionsInterface.insertTransaction(toTransaction)){
+            throw new IllegalArgumentException("口座開設が失敗しました。");
+        };
+
     }
 
 }

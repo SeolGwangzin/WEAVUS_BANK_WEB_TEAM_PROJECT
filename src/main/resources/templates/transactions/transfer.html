@@ -2,7 +2,7 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>계좌 이체</title>
+    <title>振込</title>
     <style>
         body { font-family: sans-serif; margin: 2em; }
         .container { max-width: 500px; margin: 0 auto; padding: 2em; border: 1px solid #ccc; border-radius: 8px; }
@@ -13,9 +13,7 @@
         button:hover { background-color: #0056b3; }
 
         .modal-overlay {
-            display: none; /* ✅ 핵심: 이 속성만 남겨두어 기본적으로 숨깁니다. */
-
-            /* 화면 전체를 덮는 반투명 배경 */
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
@@ -23,8 +21,6 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
 
-            /* 모달 창을 화면 중앙에 위치시키기 위한 설정 */
-            /* display: flex; <<<< ❌ 이 줄을 삭제하거나 주석 처리해야 합니다. */
             justify-content: center;
             align-items: center;
             z-index: 1000;
@@ -37,11 +33,11 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             text-align: center;
             width: 90%;
-            max-width: 400px; /* 모달의 최대 너비 */
+            max-width: 400px;
         }
 
         .modal-content p {
-            margin: 0 0 20px 0; /* 메시지와 버튼 사이의 간격 */
+            margin: 0 0 20px 0;
             font-size: 16px;
             color: #333;
         }
@@ -65,11 +61,11 @@
 <body>
 
 <div class="container">
-    <h2>계좌 이체</h2>
+    <h2>振込</h2>
     <form th:action="@{/trans/create}" th:object="${transaction}" method="post" autocomplete="off">
         <div class="form-group">
-            <label for="fromAccountNumber">출금 계좌번호</label>
-            <select id="fromAccountNumber" th:field="*{fromAccountNumber}">
+            <label for="from_account_number">振込元口座</label>
+            <select id="from_account_number" th:field="*{from_account_number}">
                 <option th:each="acc : ${accountList}"
                         th:value="${acc}"
                         th:text="${acc}">
@@ -77,22 +73,22 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="toAccountNumber">입금 계좌번호</label>
-            <input type="text" id="toAccountNumber" th:field="*{toAccountNumber}" placeholder="받는 분 계좌번호" required>
+            <label for="to_account_number">振込先口座</label>
+            <input type="text" id="to_account_number" th:field="*{to_account_number}" placeholder="振込先口座" required>
         </div>
         <div class="form-group">
-            <label for="amount">이체 금액</label>
-            <input type="number" id="amount" th:field="*{amount}" placeholder="이체할 금액" required>
+            <label for="note">備考</label>
+            <input type="text" id="note" th:field="*{note}" placeholder="備考">
         </div>
         <div class="form-group">
-            <label for="note">메모 (받는 분 통장 표시)</label>
-            <input type="text" id="note" th:field="*{note}" placeholder="메모를 남겨주세요">
+            <label for="amount">金額</label>
+            <input type="number" id="amount" th:field="*{amount}" placeholder="金額" required>円
         </div>
         <div class="form-group">
-            <label for="note">계좌 비밀번호</label>
-            <input type="password" name="password" placeholder="비밀번호를 입력해주세요" required />
+            <label for="note">口座PASSWORD</label>
+            <input type="password" name="password" placeholder="PASSWORDを入力してください。" required />
         </div>
-        <button type="submit">이체하기</button>
+        <button type="submit">振込する</button>
     </form>
 </div>
 
@@ -103,39 +99,29 @@
     </div>
 </div>
 
-<!--에러 모달팝업용 스크립트-->
 <script th:inline="javascript">
-    /*<![CDATA[*/
 
-    // 모달 관련 HTML 요소를 가져옴
     const modal = document.getElementById('error-modal');
     const modalMessage = document.getElementById('modal-message');
     const closeBtn = document.getElementById('modal-close-btn');
 
-    // 서버에서 전달된 'errorMessage' 값을 가져옴
     const errorMessage = /*[[${errorMessage}]]*/ null;
 
-    // errorMessage가 존재할 경우 모달을 띄움
     if (errorMessage) {
-        // 메시지 설정
         modalMessage.textContent = errorMessage;
-        // 모달 보이기 (CSS의 display 속성을 'flex'로 변경)
         modal.style.display = 'flex';
     }
 
-    // '확인' 버튼을 누르면 모달을 닫음
     closeBtn.addEventListener('click', function() {
         modal.style.display = 'none';
     });
 
-    // 모달 바깥의 회색 영역을 클릭하면 모달을 닫음
     window.addEventListener('click', function(event) {
         if (event.target === modal) {
             modal.style.display = 'none';
         }
     });
 
-    /*]]>*/
 </script>
 
 

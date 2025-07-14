@@ -12,8 +12,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class AccountsEntity {
     private int id;            
-    private int userId;
-    private String accountNumber;
+    private int user_id;
+    private String account_number;
     private Integer balance;
     private String password;
     private String purpose;
