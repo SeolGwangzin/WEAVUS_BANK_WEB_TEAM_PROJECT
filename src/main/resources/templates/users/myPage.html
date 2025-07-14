@@ -13,7 +13,6 @@
         .page-container { max-width: 800px; margin: 2em auto; padding: 2.5em; background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); }
         h2 { text-align: center; margin: 0 0 1em 0; font-size: 28px; color: #2c3e50; font-weight: 700; }
 
-        /* --- 공통 버튼 스타일 --- */
         .btn { display: inline-block; text-decoration: none; padding: 10px 20px; border-radius: 6px; font-weight: 500; text-align: center; cursor: pointer; transition: background-color 0.2s, box-shadow 0.2s; }
         .btn-primary { background-color: #007bff; color: white; }
         .btn-primary:hover { background-color: #0056b3; }
@@ -21,7 +20,6 @@
         .btn-secondary:hover { background-color: #5a6268; }
         .btn[disabled] { background-color: #ccc; cursor: not-allowed; box-shadow: none; }
 
-        /* --- 사용자 정보 섹션 --- */
         .user-info-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e0e0e0; padding-bottom: 1em; margin-bottom: 1.5em; }
         .info-section { border: 1px solid #e9ecef; border-radius: 8px; margin-bottom: 2.5em; }
         .info-section dl { margin: 0; padding: 0; }
@@ -30,7 +28,6 @@
         .info-section dt { background-color: #f8f9fa; padding: 15px; font-weight: 500; min-width: 150px; text-align: left; border-right: 1px solid #e9ecef; }
         .info-section dd { padding: 15px; margin: 0; flex-grow: 1; }
 
-        /* --- 보유 계좌 섹션 --- */
         .account-list-header { border-bottom: 2px solid #e0e0e0; padding-bottom: 0.5em; margin-bottom: 1.5em; font-size: 20px; font-weight: 700; color: #2c3e50; }
         .account-box { border: 1px solid #e9ecef; border-radius: 8px; margin-bottom: 1.5em; }
         .account-box a { color: #007bff; text-decoration: none; font-weight: 500; }
@@ -38,7 +35,6 @@
         .account-balance-info { display: flex; justify-content: space-between; align-items: center; background-color: #f8f9fa; padding: 10px 15px; border-top: 1px solid #e9ecef; }
         .no-data { text-align: center; padding: 3em 0; color: #777; }
 
-        /* --- 하단 버튼 컨테이너 --- */
         .bottom-action { text-align: center; margin-top: 2em; }
     </style>
 </head>
@@ -105,7 +101,6 @@
             return numberStr.replace(/(\d{4})(?=\d)/g, '$1-');
         }
 
-        // 모든 계좌번호 span에 대해 서식과 마스킹 적용
         const accountSpans = document.querySelectorAll('[id^="account-number-"]');
         accountSpans.forEach(span => {
             const originalNumber = span.textContent;

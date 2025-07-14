@@ -8,31 +8,31 @@ import java.util.List;
 @Mapper
 public interface AccountsInterface {
 
-        //새로운 계좌 생성
+        //口座開設
         @Insert("""
         INSERT INTO accounts (user_id, account_number, balance, password, purpose)
-        VALUES (#{userId}, #{accountNumber}, #{balance}, #{password}, #{purpose})
+        VALUES (#{user_id}, #{account_number}, #{balance}, #{password}, #{purpose})
     """)
-        @Options(useGeneratedKeys = true, keyProperty = "id")   //id는 자동 증가이므로 삽입 작업후 자동 생성된 id값을 다시 받아옴
+        @Options(useGeneratedKeys = true, keyProperty = "id")
         void insertAccount(AccountsEntity account);
 
-        //모든 계좌 정보 불러오기
+        //選んだユーザーの口座情報を貰う。
         @Select("SELECT * FROM accounts where user_id = #{user_id}")
         List<AccountsEntity> findAll(int user_id);
 
-        //지정 계좌 번호들 불러오기
+        //選んだユーザーの口座番号だけ貰う。
         @Select("SELECT account_number FROM accounts where user_id = #{user_id}")
         List<String> findAccountNum(int user_id);
 
-        //계좌번호로 지정 계좌 정보 불러오기
+        //口座番号で口座情報を貰う。
         @Select("SELECT * FROM accounts where account_number = #{account_number}")
         AccountsEntity findAccountAll(String account_number);
 
-        //지정된 계좌의 잔고 가져오기
+        //選んだ口座の残高を貰う。
         @Select("SELECT balance FROM accounts where account_number = #{account_number}")
         int findBalanceByBalanceId(String account_number);
 
-        //잔고 업데이트
+        //残高アップデート。
         @Update("UPDATE accounts SET balance = #{balance} WHERE account_number = #{account_number}")
         void updateBalance(String account_number, int balance);
 }
