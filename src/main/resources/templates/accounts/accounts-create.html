@@ -3,20 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>口座登録</title>
-    <style>
-        .modal-overlay {
-            display: none; /* ✅ 핵심: 이 속성만 남겨두어 기본적으로 숨깁니다. */
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
 
-            /* 화면 전체를 덮는 반투명 배경 */
+    <style>
+        body{
+            font-family: 'Noto Sans JP', sans-serif;
+            margin: 0;
+        }
+        .modal-overlay {
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
-
-            /* 모달 창을 화면 중앙에 위치시키기 위한 설정 */
-            /* display: flex; <<<< ❌ 이 줄을 삭제하거나 주석 처리해야 합니다. */
             justify-content: center;
             align-items: center;
             z-index: 1000;
@@ -29,11 +33,11 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             text-align: center;
             width: 90%;
-            max-width: 400px; /* 모달의 최대 너비 */
+            max-width: 400px;
         }
 
         .modal-content p {
-            margin: 0 0 20px 0; /* 메시지와 버튼 사이의 간격 */
+            margin: 0 0 20px 0;
             font-size: 16px;
             color: #333;
         }
@@ -54,7 +58,14 @@
         }
     </style>
 </head>
+<div id="error-modal" class="modal-overlay">
+    <div class="modal-content">
+        <p id="modal-message"></p>
+        <button id="modal-close-btn">確認</button>
+    </div>
+</div>
 <body>
+<div th:replace="~{navbar/navbar :: navbarFragment}"></div>
 <div class="container">
     <h2>口座登録</h2>
 
@@ -82,19 +93,22 @@
                 <strong>電話番号:</strong>
                 <span th:text="${loginUser.phone_number}">090-1234-5678</span>
             </p>
+<!--            <p>-->
+<!--                <strong>電話番号:</strong>-->
+<!--                <span th:text="${loginUser.getId()}">090-1234-5678</span>-->
+<!--            </p>-->
+            <input type="hidden" name="user_id" th:value="${loginUser.getId()}" />
         </fieldset>
-
-        <input type="hidden" name="userId" th:value="${loginUser.id}" />
 
         <fieldset>
             <legend>口座情報入力</legend>
             <div class="form-group">
                 <label for="password">パスワード:</label>
-                <input id="password" type="password" th:field="*{password}" required />
+                <input id="password" type="password" th:field="*{password}" inputmode="numeric" required />
             </div>
             <div class="form-group">
                 <label for="passwordCheck">パスワード確認:</label>
-                <input id="passwordCheck" type="password" name="passwordCheck" required />
+                <input id="passwordCheck" type="password" name="passwordCheck" inputmode="numeric" required />
             </div>
             <div class="form-group">
                 <label for="purpose">目的:</label>
@@ -106,31 +120,23 @@
     </form>
 </div>
 
-<!--에러 모달팝업용 스크립트-->
 <script th:inline="javascript">
 
-    // 모달 관련 HTML 요소를 가져옴
     const modal = document.getElementById('error-modal');
     const modalMessage = document.getElementById('modal-message');
     const closeBtn = document.getElementById('modal-close-btn');
 
-    // 서버에서 전달된 'errorMessage' 값을 가져옴
     const errorMessage = /*[[${errorMessage}]]*/ null;
 
-    // errorMessage가 존재할 경우 모달을 띄움
     if (errorMessage) {
-        // 메시지 설정
         modalMessage.textContent = errorMessage;
-        // 모달 보이기 (CSS의 display 속성을 'flex'로 변경)
         modal.style.display = 'flex';
     }
 
-    // '확인' 버튼을 누르면 모달을 닫음
     closeBtn.addEventListener('click', function() {
         modal.style.display = 'none';
     });
 
-    // 모달 바깥의 회색 영역을 클릭하면 모달을 닫음
     window.addEventListener('click', function(event) {
         if (event.target === modal) {
             modal.style.display = 'none';

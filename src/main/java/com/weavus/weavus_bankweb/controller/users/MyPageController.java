@@ -17,6 +17,7 @@ public class MyPageController {
 
     private final AccountsService accountsService;
 
+    //mypageに移動。
     @GetMapping("/myPage")
     public String myPageView(HttpSession session, Model model) {
 
@@ -29,9 +30,10 @@ public class MyPageController {
         return "users/myPage";
     }
 
+    //ログアウトする。
     @GetMapping("/logout")
     public String myPageView(HttpSession session) {
-        session.invalidate(); // 현재 세션 무효화 (모든 세션 속성 제거)
+        session.invalidate();
         return "redirect:/users/user-login";
     }
 }

@@ -17,20 +17,17 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class AccountsController {
 
     private final AccountsService accountsService;
-    private final UsersService userService;
 
-
-    // 계좌 등록 화면 보여주기
+    // 口座開設画面に移動。
     @GetMapping("/create")
     public String showForm(HttpSession session, Model model) {
         model.addAttribute("account", new AccountsEntity());
         UsersEntity loginUser = (UsersEntity) session.getAttribute("loginUser");
-
         model.addAttribute("loginUser", loginUser);
         return "accounts/accounts-create";
     }
 
-    // 계좌 등록하기
+    // 口座開設する。
     @PostMapping("/create")
     public String createAccount(@ModelAttribute AccountsEntity account, @RequestParam("passwordCheck") String passwordCheck, RedirectAttributes redirectAttributes) {
         try{
@@ -39,7 +36,7 @@ public class AccountsController {
             redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
             return "redirect:/accounts/create";
         }catch (Exception e) {
-            redirectAttributes.addFlashAttribute("errorMessage", "알 수 없는 오류가 발생했습니다.");
+            redirectAttributes.addFlashAttribute("errorMessage", "わからないエラーが発生しました。");
             return "redirect:/accounts/create";
         }
         return "redirect:/index";

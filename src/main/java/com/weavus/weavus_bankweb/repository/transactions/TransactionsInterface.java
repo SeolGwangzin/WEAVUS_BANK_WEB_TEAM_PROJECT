@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper
 public interface TransactionsInterface {
 
-    //거래내역 추가
+    //取引履歴追加。
     @Insert("""
     INSERT into transactions (from_account_number, to_account_number, type,
                               amount, note, balance)
@@ -18,7 +18,7 @@ public interface TransactionsInterface {
     @Options(useGeneratedKeys = true, keyProperty = "id")
     int insertTransaction(TransactionsEntity transaction);
 
-    //지정된 계좌의 전체 거래내역
+    //指定された番号を変更。
     @Select("""
         SELECT * FROM transactions where 
                                     (from_account_number = #{account_number} AND type = '出金') 

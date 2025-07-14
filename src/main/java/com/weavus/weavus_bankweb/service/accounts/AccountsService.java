@@ -20,7 +20,7 @@ public class AccountsService {
         SecureRandom random = new SecureRandom();
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 12; i++) {
-            //첫자리는 0이 안나오게
+            //最初の番号は０が出ないようにする。
             if (i == 0) {
                 sb.append(random.nextInt(9) + 1); // 1~9
             } else {
@@ -32,6 +32,11 @@ public class AccountsService {
 
     //口座開設
     public void createAccount(AccountsEntity account, String passwordCheck) {
+        //すでに口座が二つある場合。
+        if(accountsInterface.findAll(account.getUser_id()).size() == 2){
+            throw new IllegalArgumentException("口座はすでに2つあります。");
+        }
+
         //口座番号を入れる変数
         String accountNumber = "";
 
@@ -40,23 +45,26 @@ public class AccountsService {
             accountNumber = generateAccountNumber();
         } while (accountsInterface.findAccountAll(accountNumber) != null);
 
-        if(accountsInterface.findAll(account.getUser_id()).size() == 2){
-            throw new IllegalArgumentException("口座がも二つあります。");
-
+        //入力しなかった場合。
+        if(account.getPassword() == null) {
+            throw new IllegalArgumentException("パスワードを入力してください。。");
         }
 
-        if(account.getPassword().length() < 4 ||  account.getPassword().length() > 8){
-            throw new IllegalArgumentException("口座番号の桁数は4~8の間にしてください。");
+        //パスワードの長さが4~8の間ではない場合。
+        if(!account.getPassword().matches("\\d{4,8}")){
+            System.out.println(accountsInterface.findAll(account.getUser_id()).size());
+            System.out.println(account.getUser_id());
+            throw new IllegalArgumentException("パスワードの長さは4~8の間で、数字のみ可能です。");
         }
 
         //PASSWORDとPASSWORD確認が間違った場合
         if(!account.getPassword().equals(passwordCheck)){
-            throw new IllegalArgumentException("PASSWORDとPASSWORD確認が違います。");
+            throw new IllegalArgumentException("パスワードとパスワード確認が違います。");
         }
 
         account.setAccount_number(accountNumber);
         account.setUser_id(account.getUser_id());
-        account.setBalance(100000); //基本に入れる。
+        account.setBalance(100000); //基本 value。
         accountsInterface.insertAccount(account);
     }
 
@@ -64,12 +72,12 @@ public class AccountsService {
         return accountsInterface.findAll(userId);
     }
 
-    //특정 유저 계좌 번호만 가져옴
+
     public List<String> getAllAccount(int userId) {
         return accountsInterface.findAccountNum(userId);
     }
 
-    //계좌번호로 찾기
+    //口座番号で探す。
     public AccountsEntity getAccount(String accountNumber) {
         return accountsInterface.findAccountAll(accountNumber);
     }

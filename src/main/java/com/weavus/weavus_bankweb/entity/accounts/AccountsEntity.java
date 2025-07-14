@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Builder
-@AllArgsConstructor //모든게 포함된 생성자 자동생성
+@AllArgsConstructor
 @NoArgsConstructor
 public class AccountsEntity {
     private int id;            

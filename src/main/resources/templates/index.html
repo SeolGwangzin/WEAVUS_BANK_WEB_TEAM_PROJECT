@@ -9,6 +9,100 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/navbar.css}">
 
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            margin: 0;
+            background-color: #f4f7f9;
+            color: #333;
+            text-align: center;
+        }
+        .main-container {
+            max-width: 800px;
+            margin: 2em auto;
+            padding: 2em;
+        }
+        h1 {
+            margin-bottom: 0.5em;
+        }
+        h2 {
+            margin-top: 0;
+            font-weight: 400;
+        }
+
+        .account-section select {
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            margin: 0 10px;
+        }
+        #balanceDisplay {
+            font-weight: bold;
+            color: #0056b3;
+        }
+        .new-account-link {
+            display: inline-block;
+            margin-top: 1em;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        /* --- 為替レート --- */
+        .exchange-container {
+            padding: 2.5em;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .exchange-container h2 {
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 0.5em;
+            font-size: 24px;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+        .header-info {
+            text-align: center;
+            margin-bottom: 2em;
+            color: #667;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 16px;
+            text-align: left;
+        }
+        thead th {
+            font-weight: 500;
+            padding: 12px;
+            background-color: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+        }
+        tbody td {
+            padding: 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+        .rate-value {
+            text-align: right;
+            font-weight: 700;
+            color: #0056b3;
+        }
+        .error-message {
+            text-align: center;
+            color: #d9534f;
+            padding: 3em;
+            font-weight: 500;
+        }
+    </style>
+
 </head>
 <body style="text-align: center">
 
@@ -32,6 +126,38 @@
 <!-- 口座を持ってない場合 -->
 <div th:if="${accounts == null or accounts.isEmpty()}">
     <a th:href="@{/new}">新しい口座を作ってください</a>
+</div>
+
+<div class="exchange-container">
+    <h2>為替レート</h2>
+
+    <div th:if="${filteredRates != null}">
+        <div class="header-info">
+            <p>
+                <strong th:text="${filteredRates.baseCode}">JPY</strong> 基準
+                | 最終更新: <span th:text="${filteredRates.timeLastUpdateUtc}"></span>
+            </p>
+        </div>
+        <table>
+            <thead>
+            <tr>
+                <th>通貨</th>
+                <th style="text-align: right;">1 JPYあたりの為替レート</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each="filteredRates : ${filteredRates.getConversionRates()}">
+                <td th:text="${filteredRates.key}">USD</td>
+                <td class="rate-value" th:text="${#numbers.formatDecimal(filteredRates.value, 1, 4)}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div th:if="${filteredRates == null}">
+        <p class="error-message">為替レート情報の取得に失敗しました。</p>
+    </div>
 </div>
 
 <script>
