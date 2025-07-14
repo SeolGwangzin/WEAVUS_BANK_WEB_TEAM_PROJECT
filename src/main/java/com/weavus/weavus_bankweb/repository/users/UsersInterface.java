@@ -5,10 +5,12 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.Optional;
+
 @Mapper
 public interface UsersInterface {
     @Select("SELECT * FROM users WHERE username = #{username}")
-    UsersEntity SelectUserByUsername(String username);
+    UsersEntity FindUserByUsername(String username);
 
     @Insert("""
         INSERT INTO users (
@@ -38,5 +40,8 @@ public interface UsersInterface {
             #{phone_number}
         )
         """)
-    void createNewUser(UsersEntity user);
+    void save(UsersEntity user);
+
+    @Select("SELECT * FROM users WHERE id = #{id}")
+    Optional<UsersEntity> findUserById(int id);
 }

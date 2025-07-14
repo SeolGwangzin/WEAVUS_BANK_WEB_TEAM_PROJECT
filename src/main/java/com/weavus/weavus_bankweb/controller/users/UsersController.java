@@ -15,10 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
@@ -33,7 +30,8 @@ public class UsersController {
     }
 
     @GetMapping("/register")
-    public String showRegisterPage() {
+    public String showRegisterPage(Model model) {
+        model.addAttribute("registerForm", new RegisterForm());
         return "users/user-create";
     }
 
@@ -67,8 +65,14 @@ public class UsersController {
     }
 
     @PostMapping("/register")
-    public String handleRegister(RegisterForm registerForm) {
-        usersService.handleRegister(registerForm);
-        return "redirect:/login";
+    public String handleRegister(RegisterForm registerForm, Model model) {
+        try {
+            usersService.handleRegister(registerForm);
+            return "redirect:/login";
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("errorMsg", e.getMessage());
+            model.addAttribute("registerForm", registerForm);
+            return "users/user-create";
+        }
     }
 }

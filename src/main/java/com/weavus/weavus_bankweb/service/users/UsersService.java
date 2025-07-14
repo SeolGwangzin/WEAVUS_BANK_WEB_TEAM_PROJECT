@@ -6,6 +6,7 @@ import com.weavus.weavus_bankweb.entity.users.UsersEntity;
 import com.weavus.weavus_bankweb.repository.users.UsersInterface;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -18,10 +19,18 @@ public class UsersService {
     }
 
     public UsersEntity findUserByUsername(String username) {
-        return usersInterface.SelectUserByUsername(username);
+        return usersInterface.FindUserByUsername(username);
     }
 
+    @Transactional
     public void handleRegister(RegisterForm registerForm) {
+        //usernameすでに存在してるか確認
+        UsersEntity findUser = usersInterface.FindUserByUsername(registerForm.getUsername());
+        if (findUser != null) {
+            //username存在
+            throw new IllegalArgumentException("usernameがすでに使われています");
+        }
+
         UsersEntity user = new UsersEntity();
         String fullName = registerForm.getLast_name() + " " + registerForm.getFirst_name();
         user.setUsername(registerForm.getUsername());
@@ -36,6 +45,6 @@ public class UsersService {
         user.setAddress_detail(registerForm.getAddress_detail());
         user.setPhone_number(registerForm.getPhone_number());
 
-        usersInterface.createNewUser(user);
+        usersInterface.save(user);
     }
 }
