@@ -2,6 +2,7 @@ package com.weavus.weavus_bankweb.service.users;
 
 import com.weavus.weavus_bankweb.dto.users.LoginForm;
 import com.weavus.weavus_bankweb.dto.users.RegisterForm;
+import com.weavus.weavus_bankweb.dto.users.UserUpdateForm;
 import com.weavus.weavus_bankweb.entity.users.UsersEntity;
 import com.weavus.weavus_bankweb.repository.users.UsersInterface;
 import lombok.RequiredArgsConstructor;
@@ -46,5 +47,20 @@ public class UsersService {
         user.setPhone_number(registerForm.getPhone_number());
 
         usersInterface.save(user);
+    }
+
+    @Transactional
+    public void handleUpdate(UserUpdateForm form, UsersEntity loginUser) {
+        UsersEntity user = usersInterface.findUserById(loginUser.getId())
+                .orElseThrow(() -> new IllegalArgumentException("ユーザーが存在しません"));
+        user.setFull_name(form.getLast_name() + form.getFirst_name());
+        user.setPostal_code(form.getPostal_code());
+        user.setPrefecture(form.getPrefecture());
+        user.setCity(form.getCity());
+        user.setAddress_detail(form.getAddress_detail());
+        user.setPhone_number(form.getPhone_number());
+
+        usersInterface.UpdateUser(user);
+
     }
 }

@@ -1,10 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+<h1>個人情報変更</h1>
+<form th:action="@{/update}" method="post">
+    <div>
+        <label for="last_name">姓:</label>
+        <input type="text" id="last_name" name="last_name" required>
+        <br>
+        <label for="first_name">名:</label>
+        <input type="text" id="first_name" name="first_name" required>
+        <p id="checkNameMsg"></p>
+    </div>
 
+    <div>
+        <label for="postal_code">郵便番号:</label>
+        <input type="text" id="postal_code" name="postal_code" placeholder="区切り無しで入力" th:value="${user.postal_code}" required>
+        <button type="button" id="searchAddress">住所検索</button>
+        <p id="checkPostalCode"></p>
+    </div>
+    <div>
+        <label for="prefecture">都道府県:</label>
+        <input type="text" id="prefecture" name="prefecture" th:value="${user.prefecture}" required>
+        <br>
+        <label for="city">市区町村:</label>
+        <input type="text" id="city" name="city" th:value="${user.city}" required>
+        <br>
+        <label for="address_detail">番地・建物名:</label>
+        <input type="text" id="address_detail" name="address_detail" th:value="${user.address_detail}" required>
+    </div>
+    <div>
+        <label for="phone_number">電話番号:</label>
+        <input type="text" id="phone_number" name="phone_number" th:value="${user.phone_number}" required>
+    </div>
+    <div>
+        <button type="submit">保存</button>
+        <a th:href="@{/myPage}">キャンセル</a>
+    </div>
+</form>
+
+
+<script>
+    function searchAddress() {
+        const postalCode = document.getElementById("postal_code").value.trim();
+        const resultElement = document.getElementById("checkPostalCode");
+
+        if (!postalCode) {
+            resultElement.textContent = "郵便番号を入力してください";
+            return;
+        }
+
+        // zipcloud APIを使う
+        fetch(`https://zipcloud.ibsnet.co.jp/api/search?zipcode=${postalCode}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.results) {
+                    const address = data.results[0];
+                    document.getElementById("prefecture").value = address.address1;
+                    document.getElementById("city").value = address.address2 + address.address3;
+                    resultElement.textContent = "住所を自動入力しました";
+                    resultElement.style.color = "green";
+                } else {
+                    resultElement.textContent = data.message || "該当する住所が見つかりませんでした";
+                    resultElement.style.color = "red";
+                }
+            })
+            .catch(error => {
+                console.error("エラー:", error);
+                resultElement.textContent = "検索中にエラーが発生しました";
+                resultElement.style.color = "red";
+            });
+    }
+    window.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("searchAddress").addEventListener("click", searchAddress);
+    })
+</script>
 </body>
 </html>
