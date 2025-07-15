@@ -1,21 +1,13 @@
-/* 내비게이션 바 전체 스타일 */
 .navbar {
     display: flex;
     align-items: center;
-    /* ✅ space-between으로 변경하여 모든 자식 요소들의 간격을 균등하게 배분 */
     justify-content: space-between;
     background-color: #ffffff;
-    padding: 10px 30px;
+    padding: 0;
     border-bottom: 1px solid #e9ecef;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    /* gap 속성은 이제 필요 없으므로 삭제합니다. */
 }
 
-/* ✅ justify-content를 제거하고 gap으로 간격을 조절 */
-/* .nav-left, .nav-right 관련 스타일은 이제 필요 없으므로 삭제합니다. */
-
-
-/* 로고 스타일 (변경 없음) */
 .logo-link {
     display: flex;
     align-items: center;
@@ -25,23 +17,22 @@
     font-size: 20px;
 }
 .logo-link img {
-    height: 40px;
-    margin-right: 10px;
+    height: 75px;
+    margin: 7px 15px;
 }
 
-/* 내비게이션 메뉴 아이템 스타일 (변경 없음) */
 .nav-item {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #e9ecef;
-    border: 1px solid #ced4da;
+    flex: 1;
+    text-align: center;
+    padding: 22px 0;
+    background-color: #ffffff;
+    border-right: 1px solid #ced4da;
     text-decoration: none;
-    color: #495057;
+    color: #2c2c2c;
     font-weight: 500;
-    border-radius: 4px;
     transition: background-color 0.2s;
 }
 
 .nav-item:hover {
-    background-color: #dee2e6;
+    background-color: #f4f7f9;
 }

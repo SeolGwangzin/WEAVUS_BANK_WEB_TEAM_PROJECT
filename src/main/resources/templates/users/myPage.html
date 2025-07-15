@@ -16,25 +16,29 @@
         .btn { display: inline-block; text-decoration: none; padding: 10px 20px; border-radius: 6px; font-weight: 500; text-align: center; cursor: pointer; transition: background-color 0.2s, box-shadow 0.2s; }
         .btn-primary { background-color: #007bff; color: white; }
         .btn-primary:hover { background-color: #0056b3; }
-        .btn-secondary { background-color: #6c757d; color: white; }
+        .btn-secondary { background-color: #007bff; color: white; }
         .btn-secondary:hover { background-color: #5a6268; }
         .btn[disabled] { background-color: #ccc; cursor: not-allowed; box-shadow: none; }
 
         .user-info-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e0e0e0; padding-bottom: 1em; margin-bottom: 1.5em; }
-        .info-section { border: 1px solid #e9ecef; border-radius: 8px; margin-bottom: 2.5em; }
+
+        .info-section { border: 1px solid #e9ecef; border-radius: 8px; margin-bottom: 1.5em; }
         .info-section dl { margin: 0; padding: 0; }
         .info-section .info-row { display: flex; border-bottom: 1px solid #e9ecef; }
         .info-section .info-row:last-child { border-bottom: none; }
-        .info-section dt { background-color: #f8f9fa; padding: 15px; font-weight: 500; min-width: 150px; text-align: left; border-right: 1px solid #e9ecef; }
-        .info-section dd { padding: 15px; margin: 0; flex-grow: 1; }
+        .info-section dt { background-color: #f8f9fa; padding: 15px; font-weight: 500; min-width: 150px; text-align: left; border-right: 1px solid #e9ecef; flex-shrink: 0;}
+        .info-section dd { padding: 15px; margin: 0; flex-grow: 1; display: flex; align-items: center; }
+        .info-section dd a { color: #007bff; text-decoration: none; font-weight: 500; }
+        .info-section dd a:hover { text-decoration: underline; }
+
+        .info-section .dt-balance {
+            min-width: 100px;
+            border-left: 1px solid #e9ecef;
+            border-right: none;
+        }
 
         .account-list-header { border-bottom: 2px solid #e0e0e0; padding-bottom: 0.5em; margin-bottom: 1.5em; font-size: 20px; font-weight: 700; color: #2c3e50; }
-        .account-box { border: 1px solid #e9ecef; border-radius: 8px; margin-bottom: 1.5em; }
-        .account-box a { color: #007bff; text-decoration: none; font-weight: 500; }
-        .account-box a:hover { text-decoration: underline; }
-        .account-balance-info { display: flex; justify-content: space-between; align-items: center; background-color: #f8f9fa; padding: 10px 15px; border-top: 1px solid #e9ecef; }
         .no-data { text-align: center; padding: 3em 0; color: #777; }
-
         .bottom-action { text-align: center; margin-top: 2em; }
     </style>
 </head>
@@ -53,11 +57,11 @@
         <dl>
             <div class="info-row"><dt>名前</dt><dd th:text="*{full_name}">***</dd></div>
             <div class="info-row"><dt>ID</dt><dd th:text="*{username}">***</dd></div>
-<!--            <div class="info-row"><dt>誕生日</dt><dd th:text="*{#temporals.format(birthDate, 'yyyy/MM/dd')}">****/**/**</dd></div>-->
+            <div class="info-row"><dt>誕生日</dt><dd th:text="*{#temporals.format(birth_date, 'yyyy/MM/dd')}">****/**/**</dd></div>
             <div class="info-row"><dt>性別</dt><dd th:text="*{gender}">男</dd></div>
             <div class="info-row"><dt>メール</dt><dd th:text="*{email}">****@***.***</dd></div>
-            <div class="info-row"><dt>電話番号</dt><dd th:text="*{phone_number}">***-****-****</dd></div>
-            <div class="info-row"><dt>郵便番号</dt><dd th:text="*{postal_code}">***-****</dd></div>
+            <div class="info-row"><dt>電話番号</dt><dd th:text="*{#strings.concat(phone_number.substring(0,3), '-', phone_number.substring(3,7), '-', phone_number.substring(7))}">***-****-****</dd></div>
+            <div class="info-row"><dt>郵便番号</dt><dd th:text="*{#strings.concat(postal_code.substring(0,3), '-', postal_code.substring(3))}">***-****</dd></div>
         </dl>
     </div>
 
@@ -70,19 +74,23 @@
     </div>
 
     <div th:if="${not #lists.isEmpty(accountsEntityList)}">
-        <div class="account-box" th:each="account : ${accountsEntityList}">
+        <div class="info-section" th:each="account : ${accountsEntityList}">
             <dl>
                 <div class="info-row">
                     <dt>口座番号</dt>
                     <dd>
                         <a th:href="@{/trans/list(accountNumber=${account.account_number})}">
-                            <span th:id="'account-number-' + ${account.account_number}" th:text="${account.account_number}"></span>
+                            <span th:id="'account-number-' + ${account.account_number}" th:text="${#strings.concat(account.getAccount_number().substring(0,4), '-',account.getAccount_number().substring(4,8), '-****')}"></span>
                         </a>
                     </dd>
                 </div>
-                <div class="account-balance-info">
-<!--                    <span><strong>登録日:</strong> <span th:text="${#temporals.format(account.date, 'yyyy-MM-dd')}"></span></span>-->
-                    <span><strong>残高:</strong> <span th:text="${#numbers.formatInteger(account.balance, 0, 'COMMA')} + '円'"></span></span>
+                <div class="info-row">
+                    <dt>登録日</dt>
+                    <dd th:text="${#temporals.format(account.getCreate_date, 'yyyy-MM-dd')}"></dd>
+                    <dt class="dt-balance">残高</dt>
+                    <dd>
+                        <span style="font-weight: 700;" th:text="${#numbers.formatInteger(account.balance, 0, 'COMMA')} + '円'"></span>
+                    </dd>
                 </div>
             </dl>
         </div>
@@ -91,29 +99,6 @@
     <div class="bottom-action" th:if="${#lists.size(accountsEntityList) < 2}">
         <a th:href="@{/accounts/create}" class="btn btn-primary">新規口座開設</a>
     </div>
-
 </div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        function formatAccountNumber(numberStr) {
-            if (!numberStr) return '';
-            return numberStr.replace(/(\d{4})(?=\d)/g, '$1-');
-        }
-
-        const accountSpans = document.querySelectorAll('[id^="account-number-"]');
-        accountSpans.forEach(span => {
-            const originalNumber = span.textContent;
-            if (originalNumber.length > 4) {
-                const partToKeep = originalNumber.substring(0, originalNumber.length - 4);
-                const formattedPart = formatAccountNumber(partToKeep);
-                span.textContent = formattedPart + '-****';
-            } else {
-                span.textContent = formatAccountNumber(originalNumber);
-            }
-        });
-    });
-</script>
-
 </body>
 </html>
