@@ -13,7 +13,7 @@
         body {
             font-family: 'Noto Sans JP', sans-serif;
             margin: 0;
-            background-color: #f4f7f9;
+            background-color: #E8F9FF;
             color: #333;
             text-align: center;
         }
@@ -134,8 +134,16 @@
     <div th:if="${filteredRates != null}">
         <div class="header-info">
             <p>
-                <strong th:text="${filteredRates.baseCode}">JPY</strong> 基準
-                | 最終更新: <span th:text="${filteredRates.timeLastUpdateUtc}"></span>
+            <form id="currencyForm" th:action="@{/index}" method="get" style="display: inline-block;">
+                <select name="base" onchange="this.form.submit()">
+                    <option th:each="currency : ${currencyList}"
+                            th:value="${currency}"
+                            th:text="${currency}"
+                            th:selected="${currency == filteredRates.getBaseCode()}">
+                    </option>
+                </select>
+            </form>
+            基準 | 最終更新: <span th:text="${filteredRates.timeLastUpdateUtc}"></span>
             </p>
         </div>
         <table>

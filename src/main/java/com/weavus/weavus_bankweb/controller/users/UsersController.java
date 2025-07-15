@@ -14,7 +14,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -36,7 +38,7 @@ public class UsersController {
     }
 
     @GetMapping("/index")
-    public String showIndexPage(HttpSession session, Model model) {
+    public String showIndexPage(@RequestParam(name = "base", required = false, defaultValue = "JPY") String baseCurrency, HttpSession session, Model model) {
         //ログインチェック
         UsersEntity loginUser = (UsersEntity) session.getAttribute("loginUser");
         if (loginUser == null) {
@@ -44,11 +46,12 @@ public class UsersController {
         }
 
         List<AccountsEntity> accounts = accountsService.getAllAccounts(loginUser.getId());
-        ExchangeRateAPIEntity filteredRates = exchangeRateAPIService.getLatestRatesFromJpy();
+        ExchangeRateAPIEntity filteredRates = exchangeRateAPIService.getLatestRatesFromJpy(baseCurrency);
 
         model.addAttribute("accounts" ,accounts);
         model.addAttribute("名前", loginUser.getFull_name());
         model.addAttribute("filteredRates", filteredRates);
+        model.addAttribute("currencyList", Arrays.asList("JPY", "USD", "CNY", "KRW", "EUR", "GBP", "CAD", "AUD"));
         return "index";
     }
 

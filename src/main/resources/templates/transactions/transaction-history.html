@@ -123,7 +123,7 @@
     <div class="account-summary" th:if="${account != null}">
         <p>
             <strong>口座番号:</strong>
-            <span id="account-number" th:text="${account.account_number}">123456789012</span>
+            <span th:text="${#strings.concat(account.getAccount_number().substring(0,4), '-',account.getAccount_number().substring(4,8), '-****')}">1234-5678-****</span>
         </p>
         <p>
             <strong>最終残高:</strong>
@@ -173,24 +173,6 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-
-        function formatAccountNumber(numberStr) {
-            if (!numberStr) return '';
-            return numberStr.replace(/(\d{4})(?=\d)/g, '$1-');
-        }
-
-        const accountNumberSpan = document.getElementById('account-number');
-        if (accountNumberSpan) {
-            const originalNumber = accountNumberSpan.textContent;
-            if (originalNumber.length > 4) {
-                const partToKeep = originalNumber.substring(0, originalNumber.length - 4);
-                const formattedPart = formatAccountNumber(partToKeep);
-                const finalDisplay = formattedPart + '-****';
-                accountNumberSpan.textContent = finalDisplay;
-            } else {
-                accountNumberSpan.textContent = formatAccountNumber(originalNumber);
-            }
-        }
 
         const filterBtn = document.getElementById('filter-btn');
         const filterDropdown = document.getElementById('filter-dropdown');
