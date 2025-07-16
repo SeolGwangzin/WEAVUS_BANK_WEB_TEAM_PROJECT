@@ -125,7 +125,7 @@
 </div>
 <!-- 口座を持ってない場合 -->
 <div th:if="${accounts == null or accounts.isEmpty()}">
-    <a th:href="@{/new}">新しい口座を作ってください</a>
+    <a th:href="@{/accounts/create}">新しい口座を作ってください</a>
 </div>
 
 <div class="exchange-container">

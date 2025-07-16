@@ -4,14 +4,13 @@ import com.weavus.weavus_bankweb.entity.transactions.TransactionsEntity;
 import com.weavus.weavus_bankweb.entity.users.UsersEntity;
 import com.weavus.weavus_bankweb.service.accounts.AccountsService;
 import com.weavus.weavus_bankweb.service.transactions.TransactionsService;
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -32,9 +31,10 @@ public class TransactionsController {
 
     //振込画面に移動。
     @GetMapping("/create")
-    public String createTransactionForm(HttpSession session, Model model) {
-        System.out.println(((UsersEntity) session.getAttribute("loginUser")).getId() + "sadasdadad");
-        List<String> accountList = accountsService.getAllAccount(((UsersEntity) session.getAttribute("loginUser")).getId());
+    public String createTransactionForm(Authentication authentication, Model model) {
+        System.out.println(((UsersEntity) authentication.getPrincipal()).getId() + "sadasdadad");
+        //List<String> accountList = accountsService.getAllAccount(((UsersEntity) session.getAttribute("loginUser")).getId());
+        List<String> accountList = accountsService.getAllAccount(((UsersEntity) authentication.getPrincipal()).getId());
 
         model.addAttribute("transaction", new TransactionsEntity());
         model.addAttribute("accountList", accountList);

@@ -1,3 +1,5 @@
+<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <nav class="navbar" th:fragment="navbarFragment">
 
   <a href="/index" class="logo-link">
@@ -7,14 +9,12 @@
   <a href="/accounts/create" class="nav-item">口座開設</a>
   <a href="/trans/create" class="nav-item">振込</a>
 
-  <!-- 로그인 상태일 때 보여줄 메뉴 -->
-  <th:block th:if="${session.loginUser != null}">
+  <th:block sec:authorize="isAuthenticated()">
     <a href="/myPage" class="nav-item">MyPage</a>
     <a href="/logout" class="nav-item">Logout</a>
   </th:block>
 
-  <!-- 로그아웃 상태일 때 보여줄 메뉴 -->
-  <th:block th:unless="${session.loginUser != null}">
+  <th:block sec:authorize="isAnonymous()">
     <a href="/login" class="nav-item">Login</a>
     <a href="/register" class="nav-item">会員登録</a>
   </th:block>

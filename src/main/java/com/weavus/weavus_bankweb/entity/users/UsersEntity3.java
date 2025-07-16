@@ -2,7 +2,7 @@ package com.weavus.weavus_bankweb.entity.users;
 
 import java.time.LocalDate;
 
-public class UsersEntity {
+public class UsersEntity3 {
     private int id;
     private String username;
     private String password;

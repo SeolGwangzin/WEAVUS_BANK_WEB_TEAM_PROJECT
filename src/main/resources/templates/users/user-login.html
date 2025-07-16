@@ -17,7 +17,11 @@
 <body>
 <div class="container">
     <form method="post" th:action="@{/login}">
-        <div th:if="${errorMessage != null}" th:text="${errorMessage}" style="color: red"></div>
+<!--    <div th:if="${errorMessage != null}" th:text="${errorMessage}" style="color: red"></div>-->
+        <!--Spring Security 適用-->
+        <div th:if="${param.error}" style="color: red">
+            ユーザー名またはパスワードが正しくありません。
+        </div>
         <div>
             <label for="username">username:</label>
             <input type="text" name="username" id="username">

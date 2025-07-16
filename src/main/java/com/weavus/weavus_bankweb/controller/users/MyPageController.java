@@ -6,8 +6,10 @@ import com.weavus.weavus_bankweb.entity.users.UsersEntity;
 import com.weavus.weavus_bankweb.repository.users.UsersInterface;
 import com.weavus.weavus_bankweb.service.accounts.AccountsService;
 import com.weavus.weavus_bankweb.service.users.UsersService;
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,27 +27,28 @@ public class MyPageController {
 
     //mypageに移動。
     @GetMapping("/myPage")
-    public String myPageView(HttpSession session, Model model) {
+    public String myPageView(Authentication authentication, Model model) {
 
-        UsersEntity loginUser = (UsersEntity) session.getAttribute("loginUser");
-        System.out.println(loginUser.getId() + "sdasdasd");
+        UsersEntity loginUser = (UsersEntity) authentication.getPrincipal();
+
         List<AccountsEntity> accountsEntityList = accountsService.getAllAccounts(loginUser.getId());
 
         model.addAttribute("loginUser", loginUser);
         model.addAttribute("accountsEntityList", accountsEntityList);
+
         return "users/myPage";
     }
 
     //ログアウトする。
-    @GetMapping("/logout")
-    public String myPageView(HttpSession session) {
-        session.invalidate();
-        return "redirect:/users/user-login";
-    }
+//    @GetMapping("/logout")
+//    public String myPageView(Authentication authentication) {
+//        session.invalidate();
+//        return "redirect:/users/user-login";
+//    }
 
     @GetMapping("/update")
-    public String showUserUpdatePage(HttpSession session, Model model) {
-        UsersEntity loginUser = (UsersEntity)session.getAttribute("loginUser");
+    public String showUserUpdatePage(Authentication authentication, Model model) {
+        UsersEntity loginUser = (UsersEntity)authentication.getPrincipal();
         if (loginUser == null) {
             return "redirect:/login";
         }
@@ -55,15 +58,24 @@ public class MyPageController {
     }
 
     @PostMapping("/update")
-    public String handleUpdate(UserUpdateForm form,HttpSession session) {
-        UsersEntity loginUser = (UsersEntity) session.getAttribute("loginUser");
+    public String handleUpdate(UserUpdateForm form, Authentication authentication) {
+        UsersEntity loginUser = (UsersEntity) authentication.getPrincipal();
         usersService.handleUpdate(form, loginUser);
 
         //session更新
         UsersEntity updatedUser = usersInterface.findUserById(loginUser.getId())
                 .orElseThrow(() -> new RuntimeException("ユーザーが見つかりませんでした"));
 
-        session.setAttribute("loginUser", updatedUser); // ✅ 重新放入 session
+        //session.setAttribute("loginUser", updatedUser); // ✅ 重新放入 session
+
+        //Spring Securityを使う。
+        Authentication newAuthentication = new UsernamePasswordAuthenticationToken(
+                updatedUser,
+                updatedUser.getPassword(),
+                authentication.getAuthorities()
+        );
+
+        SecurityContextHolder.getContext().setAuthentication(newAuthentication);
         return "redirect:/myPage";
     }
 }

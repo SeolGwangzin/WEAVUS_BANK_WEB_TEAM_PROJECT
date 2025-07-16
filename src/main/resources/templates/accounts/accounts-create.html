@@ -80,7 +80,6 @@
                 <div class="info-row"><dt>電話番号</dt><dd th:text="${#strings.concat(loginUser.phone_number.substring(0,3), '-', loginUser.phone_number.substring(3,7), '-', loginUser.phone_number.substring(7))}">090-1234-5678</dd></div>
                 <div class="info-row"><dt>郵便番号</dt><dd th:text="${#strings.concat(loginUser.postal_code.substring(0,3), '-', loginUser.postal_code.substring(3))}">123-4567</dd></div>
             </dl>
-            <input type="hidden" name="user_id" th:value="${loginUser.getId()}" />
         </div>
 
         <div class="form-header">口座情報入力</div>
