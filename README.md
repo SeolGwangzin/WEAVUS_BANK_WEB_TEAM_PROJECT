@@ -2,9 +2,7 @@
 
 Spring BootとSpring Securityを活用した銀行アプリケーションです。会員登録・ログイン・口座管理・送金・取引履歴表示など、基本的な銀行機能に加え、為替・郵便番号・金融ニュースの外部APIも活用しています。
 
-
-
-
+<br><br>
 
 ## 🎯 開発目的
 
@@ -14,9 +12,7 @@ Spring BootとSpring Securityを活用した銀行アプリケーションです
 - 入出金・送金などの基本的な取引処理
 - 外部APIを利用した実践的な銀行サービスの実装
 
-
-
-
+<br><br>
 
 ## 🧩 主な機能
 
@@ -37,9 +33,7 @@ Spring BootとSpring Securityを活用した銀行アプリケーションです
 - 🏣 郵便番号API  
 - 📰 金融ニュースAPI
 
-
-
-
+<br><br>
 
 ## 🛠 使用技術
 
@@ -51,9 +45,7 @@ Spring BootとSpring Securityを活用した銀行アプリケーションです
 - JUnit  
 - Thymeleaf
 
-
-
-
+<br><br>
 
 ## 🖥 画面構成
 
@@ -73,7 +65,7 @@ Spring BootとSpring Securityを活用した銀行アプリケーションです
 
 | 📊 取引履歴画面 | [Google Sheet](https://docs.google.com/spreadsheets/d/1Mizwa1XWfeLWeNwP_A-yFE1o5EnixtR3CLz3_6DUn9s/edit?gid=0#gid=0) |
 
-
+<br><br>
 
 ## 👤 開発者
 - ソルグァンジン
