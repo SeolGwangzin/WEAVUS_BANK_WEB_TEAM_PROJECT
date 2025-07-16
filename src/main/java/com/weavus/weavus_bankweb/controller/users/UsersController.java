@@ -1,6 +1,5 @@
 package com.weavus.weavus_bankweb.controller.users;
 
-import com.weavus.weavus_bankweb.dto.users.LoginForm;
 import com.weavus.weavus_bankweb.dto.users.RegisterForm;
 import com.weavus.weavus_bankweb.entity.API.ExchangeRateAPIEntity;
 import com.weavus.weavus_bankweb.entity.accounts.AccountsEntity;
@@ -8,8 +7,8 @@ import com.weavus.weavus_bankweb.entity.users.UsersEntity;
 import com.weavus.weavus_bankweb.service.API.ExchangeRateAPIService;
 import com.weavus.weavus_bankweb.service.accounts.AccountsService;
 import com.weavus.weavus_bankweb.service.users.UsersService;
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,9 +37,11 @@ public class UsersController {
     }
 
     @GetMapping("/index")
-    public String showIndexPage(@RequestParam(name = "base", required = false, defaultValue = "JPY") String baseCurrency, HttpSession session, Model model) {
+    public String showIndexPage(@RequestParam(name = "base", required = false, defaultValue = "JPY") String baseCurrency, Authentication authentication, Model model) {
         //ログインチェック
-        UsersEntity loginUser = (UsersEntity) session.getAttribute("loginUser");
+        //UsersEntity loginUser = (UsersEntity) session.getAttribute("loginUser");
+        UsersEntity loginUser = (UsersEntity) authentication.getPrincipal();
+
         if (loginUser == null) {
             return "redirect:/login";
         }
@@ -55,17 +56,17 @@ public class UsersController {
         return "index";
     }
 
-    @PostMapping("/login")
-    public String handleLogin(LoginForm loginForm, HttpSession session, Model model) {
-        boolean success = usersService.handleLogin(loginForm);  //ログイン判断
-        if (success) {
-            session.setAttribute("loginUser", usersService.findUserByUsername(loginForm.getUsername()));
-            return "redirect:/index";
-        } else {
-            model.addAttribute("errorMessage", "ログイン失敗！");
-            return "users/user-login";
-        }
-    }
+//    @PostMapping("/login")
+//    public String handleLogin(LoginForm loginForm, HttpSession session, Model model) {
+//        boolean success = usersService.handleLogin(loginForm);  //ログイン判断
+//        if (success) {
+//            session.setAttribute("loginUser", usersService.findUserByUsername(loginForm.getUsername()));
+//            return "redirect:/index";
+//        } else {
+//            model.addAttribute("errorMessage", "ログイン失敗！");
+//            return "users/user-login";
+//        }
+//    }
 
     @PostMapping("/register")
     public String handleRegister(RegisterForm registerForm, Model model) {
