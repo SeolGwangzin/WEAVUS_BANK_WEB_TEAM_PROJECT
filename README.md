@@ -37,8 +37,8 @@ Spring BootとSpring Securityを活用した銀行アプリケーションです
 
 ## 🛠 使用技術
 
-- Java  
-- Spring Boot  
+- Java 17
+- Spring Boot 3.4.7'
 - Spring Security  
 - H2 Database  
 - MyBatis  
