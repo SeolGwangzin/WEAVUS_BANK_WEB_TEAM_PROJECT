@@ -57,15 +57,14 @@ Spring BootとSpring Securityを活用した銀行アプリケーションです
 
 ## 🖥 画面構成
 
-- 🔐 [ログイン画面](https://docs.google.com/spreadsheets/d/1SXXUprHHZidPBEh9RtzKgrSBP-abRFdkofEKEnj3xvQ/edit?gid=0#gid=0)
-- 📝 [会員登録画面](https://docs.google.com/spreadsheets/d/1Oux5XXHSU-IN-z_ANuXZMDzC9TcMDJfK3prxNJUfHBw/edit?gid=0#gid=0)
-- 🏠 [メイン画面](https://docs.google.com/spreadsheets/d/1uzQ8i2kqknaoUJi-BggIRW7yA344FJKcZH_Uu5QwaFs/edit?gid=62595112#gid=62595112)
-- 👤 [マイページ](https://docs.google.com/spreadsheets/d/1rhVuuzdr6RTq3veOHmWOSELFM8Xt2p_jSyAzWE9FEko/edit?gid=0#gid=0)
-- 🛠 [会員情報編集画面](https://docs.google.com/spreadsheets/d/1Ie9tur_m7OD7j4M5gyH5azxpBaX7AYuRgJ3Ped8Xq_c/edit?gid=0#gid=0)
-- 🏦 [口座開設画面](https://docs.google.com/spreadsheets/d/1A85k9rVbdjujobfqciOWPuYqS2uYYHyKKf7av-CmGOs/edit?gid=0#gid=0)
-- 💸 [振込画面](https://docs.google.com/spreadsheets/d/1TUS2qzg7EEWoNS2kyuT1P0upgMGd7rN-N7HLVI2nfgo/edit?gid=0#gid=0)
-- 📊 [取引履歴画面](https://docs.google.com/spreadsheets/d/1Mizwa1XWfeLWeNwP_A-yFE1o5EnixtR3CLz3_6DUn9s/edit?gid=0#gid=0)
-
+| 🔐 ログイン画面 | [Google Sheet](https://docs.google.com/spreadsheets/d/1SXXUprHHZidPBEh9RtzKgrSBP-abRFdkofEKEnj3xvQ/edit?gid=0#gid=0) |
+| 📝 会員登録画面 | [Google Sheet](https://docs.google.com/spreadsheets/d/1Oux5XXHSU-IN-z_ANuXZMDzC9TcMDJfK3prxNJUfHBw/edit?gid=0#gid=0) |
+| 🏠 メイン画面 | [Google Sheet](https://docs.google.com/spreadsheets/d/1uzQ8i2kqknaoUJi-BggIRW7yA344FJKcZH_Uu5QwaFs/edit?gid=62595112#gid=62595112) |
+| 👤 マイページ | [Google Sheet](https://docs.google.com/spreadsheets/d/1rhVuuzdr6RTq3veOHmWOSELFM8Xt2p_jSyAzWE9FEko/edit?gid=0#gid=0) |
+| 🛠 会員情報編集画面 | [Google Sheet](https://docs.google.com/spreadsheets/d/1Ie9tur_m7OD7j4M5gyH5azxpBaX7AYuRgJ3Ped8Xq_c/edit?gid=0#gid=0) |
+| 🏦 口座開設画面 | [Google Sheet](https://docs.google.com/spreadsheets/d/1A85k9rVbdjujobfqciOWPuYqS2uYYHyKKf7av-CmGOs/edit?gid=0#gid=0) |
+| 💸 振込画面 | [Google Sheet](https://docs.google.com/spreadsheets/d/1TUS2qzg7EEWoNS2kyuT1P0upgMGd7rN-N7HLVI2nfgo/edit?gid=0#gid=0) |
+| 📊 取引履歴画面 | [Google Sheet](https://docs.google.com/spreadsheets/d/1Mizwa1XWfeLWeNwP_A-yFE1o5EnixtR3CLz3_6DUn9s/edit?gid=0#gid=0) |
 
 
 
