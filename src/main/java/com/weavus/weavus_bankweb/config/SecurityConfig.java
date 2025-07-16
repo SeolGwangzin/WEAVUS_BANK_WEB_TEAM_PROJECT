@@ -40,7 +40,6 @@ public class SecurityConfig {
                         .defaultSuccessUrl("/index", true) // ログイン成功時にリダイレクトするデフォルトページ
                         .permitAll() // ログインページ自体は誰でもアクセス可能でなければなりません。
                         .failureUrl("/login?error")
-
                 )
 
                 // ログアウト設定

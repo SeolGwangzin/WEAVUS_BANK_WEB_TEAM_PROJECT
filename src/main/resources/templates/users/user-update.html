@@ -3,46 +3,176 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>個人情報変更</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            margin: 0;
+            background-color: #f4f7f9;
+        }
+        .page-container {
+            padding: 2em 1em;
+        }
+        .update-box {
+            width: 100%;
+            max-width: 650px;
+            margin: 0 auto;
+            padding: 2.5em;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        h1 {
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 1.5em;
+            font-size: 24px;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+        .form-group {
+            margin-bottom: 1.2em;
+        }
+        .form-row {
+            display: flex;
+            gap: 1em;
+        }
+        .form-row > .form-group {
+            flex: 1;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5em;
+            font-weight: 500;
+            color: #495057;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        .validation-message {
+            font-size: 13px;
+            color: #d9534f;
+            margin-top: 5px;
+            min-height: 15px;
+        }
+        .button-group {
+            margin-top: 2em;
+            display: flex;
+            gap: 1em;
+        }
+        .button-group > * {
+            flex: 1;
+            text-align: center;
+        }
+        button[type="submit"], .btn {
+            width: 100%;
+            padding: 12px;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+        button[type="submit"] {
+            background-color: #007bff;
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .btn-cancel {
+            background-color: #6c757d;
+        }
+        .btn-cancel:hover {
+            background-color: #5a6268;
+        }
+        #searchAddress {
+            padding: 10px 15px;
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        #searchAddress:hover {
+            background-color: #5a6268;
+        }
+        .input-with-button {
+            display: flex;
+            gap: 10px;
+        }
+    </style>
 </head>
 <body>
-<h1>個人情報変更</h1>
-<form th:action="@{/update}" method="post">
-    <div>
-        <label for="last_name">姓:</label>
-        <input type="text" id="last_name" name="last_name" required>
-        <br>
-        <label for="first_name">名:</label>
-        <input type="text" id="first_name" name="first_name" required>
-        <p id="checkNameMsg"></p>
-    </div>
 
-    <div>
-        <label for="postal_code">郵便番号:</label>
-        <input type="text" id="postal_code" name="postal_code" placeholder="区切り無しで入力" th:value="${user.postal_code}" required>
-        <button type="button" id="searchAddress">住所検索</button>
-        <p id="checkPostalCode"></p>
-    </div>
-    <div>
-        <label for="prefecture">都道府県:</label>
-        <input type="text" id="prefecture" name="prefecture" th:value="${user.prefecture}" required>
-        <br>
-        <label for="city">市区町村:</label>
-        <input type="text" id="city" name="city" th:value="${user.city}" required>
-        <br>
-        <label for="address_detail">番地・建物名:</label>
-        <input type="text" id="address_detail" name="address_detail" th:value="${user.address_detail}" required>
-    </div>
-    <div>
-        <label for="phone_number">電話番号:</label>
-        <input type="text" id="phone_number" name="phone_number" th:value="${user.phone_number}" required>
-    </div>
-    <div>
-        <button type="submit">保存</button>
-        <a th:href="@{/myPage}">キャンセル</a>
-    </div>
-</form>
+<div th:replace="~{navbar/navbar :: navbarFragment}"></div>
 
+<div class="page-container">
+    <div class="update-box">
+        <h1>個人情報変更</h1>
+        <form th:action="@{/update}" method="post">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="last_name">姓:</label>
+                    <input type="text" id="last_name" name="last_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="first_name">名:</label>
+                    <input type="text" id="first_name" name="first_name" required>
+                </div>
+            </div>
+            <p id="checkNameMsg" class="validation-message" style="margin-top: -1em; margin-bottom: 1.2em;"></p>
+
+            <div class="form-group">
+                <label for="postal_code">郵便番号:</label>
+                <div class="input-with-button">
+                    <input type="text" id="postal_code" name="postal_code" placeholder="区切り無しで入力" th:value="${user.postal_code}" required>
+                    <button type="button" id="searchAddress">住所検索</button>
+                </div>
+                <p id="checkPostalCode" class="validation-message"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="prefecture">都道府県:</label>
+                <input type="text" id="prefecture" name="prefecture" th:value="${user.prefecture}" required>
+            </div>
+            <div class="form-group">
+                <label for="city">市区町村:</label>
+                <input type="text" id="city" name="city" th:value="${user.city}" required>
+            </div>
+            <div class="form-group">
+                <label for="address_detail">番地・建物名:</label>
+                <input type="text" id="address_detail" name="address_detail" th:value="${user.address_detail}" required>
+            </div>
+            <div class="form-group">
+                <label for="phone_number">電話番号:</label>
+                <input type="text" id="phone_number" name="phone_number" th:value="${user.phone_number}" required>
+            </div>
+
+            <div class="button-group">
+                <button type="submit">保存</button>
+                <a th:href="@{/myPage}" class="btn btn-cancel">キャンセル</a>
+            </div>
+        </form>
+    </div>
+</div>
 
 <script>
     function searchAddress() {
