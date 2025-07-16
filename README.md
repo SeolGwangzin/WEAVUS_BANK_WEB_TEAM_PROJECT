@@ -1,6 +1,6 @@
 # 💸 WEAVUS_BANK_WEB_TEAM_PROJECT（Spring Boot）
 
-Spring BootとSpring Securityを活用した銀行アプリケーションです。会員登録・ログイン・口座管理・送金・取引履歴表示など、基本的な銀行機能に加え、為替・郵便番号・金融ニュースの外部APIも活用しています。
+Spring BootとSpring Securityを活用した銀行アプリケーションです。会員登録・ログイン・口座開設・振込・取引履歴表示など、基本的な銀行機能に加え、為替レート・郵便番号・金融ニュースの外部APIも活用しています。
 
 <br><br>
 
