@@ -99,5 +99,5 @@ Spring BootとSpring Securityを活用した銀行アプリケーションです
 <br><br>
 
 ## 🤜🤛 開発者
-- ソルグァンジン ()
+- ソルグァンジン (https://github.com/SeolGwangzin)
 - ソウハク (https://github.com/lakkal1201)
