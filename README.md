@@ -47,13 +47,13 @@ Spring BootとSpring Securityを活用した銀行アプリケーションです
 
 ## 🛠 使用技術
 
-- Java 17
-- Spring Boot 3.4.7'
-- Spring Security  
-- H2 Database  
-- MyBatis  
-- JUnit  
-- Thymeleaf
+![Java 17](https://img.shields.io/badge/Java-17-007396?logo=java&logoColor=white)
+![Spring Boot 3.4.7](https://img.shields.io/badge/Spring_Boot-3.4.7-6DB33F?logo=springboot&logoColor=white)
+![Spring Security](https://img.shields.io/badge/Spring_Security-6DB33F?logo=springsecurity&logoColor=white)
+![H2 Database](https://img.shields.io/badge/H2-Database-blue?logo=h2&logoColor=white)
+![MyBatis](https://img.shields.io/badge/MyBatis-DB1F29?logo=mybatis&logoColor=white)
+![JUnit](https://img.shields.io/badge/JUnit-5-25A162?logo=junit5&logoColor=white)
+![Thymeleaf](https://img.shields.io/badge/Thymeleaf-005F0F?logo=thymeleaf&logoColor=white)
 
 <br><br>
 
