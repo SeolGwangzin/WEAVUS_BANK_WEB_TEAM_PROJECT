@@ -298,6 +298,8 @@ Spring BootとSpring Securityを活用した銀行アプリケーションです
 </table>
 </details>
 
+<br>
+
 ## 🤜🤛 開発者
 - ソルグァンジン (https://github.com/SeolGwangzin)
 - ソウハク (https://github.com/lakkal1201)
