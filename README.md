@@ -127,7 +127,7 @@ Spring BootとSpring Securityを活用した銀行アプリケーションです
 <summary>🪧 ナビバ（ナビゲーションバー）</summary>
 
 <img src="https://github.com/user-attachments/assets/d311f8d0-bb0b-4469-b067-a43118fc5700" /> 
-![-Chrome2025-07-1715-22-16-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/e4cfff9d-af2a-4681-a8fc-2aa5579080fb)
+<img src="https://github.com/user-attachments/assets/e4cfff9d-af2a-4681-a8fc-2aa5579080fb" /> 
  <br>
 📄 [（Google Sheet）](https://docs.google.com/spreadsheets/d/1CFtX6bLJUVxWQFGSjU5B5cPnsnZKP-GiGaxRqmP4Lbk/edit?gid=0#gid=0)
 
