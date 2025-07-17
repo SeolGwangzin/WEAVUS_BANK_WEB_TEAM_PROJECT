@@ -61,103 +61,153 @@ Spring BootとSpring Securityを活用した銀行アプリケーションです
 
 <details>
 <summary>📝 会員登録画面</summary>
-<br>-会員登録成功<br>
-<img src="https://github.com/user-attachments/assets/9168273b-1659-4735-bdfa-74a1b40b2a4e" />  <br><br>
--入力しないとか、入力した郵便番号が存在しない場合。
-<img src="https://github.com/user-attachments/assets/9dea7698-a73f-4759-a99c-2212176bbd22" />  <br><br>
+<br>
 
- 📄 [（Google Sheet）](https://docs.google.com/spreadsheets/d/1Oux5XXHSU-IN-z_ANuXZMDzC9TcMDJfK3prxNJUfHBw/edit?gid=0#gid=0)
+- 会員登録成功  
+<img src="https://github.com/user-attachments/assets/9168273b-1659-4735-bdfa-74a1b40b2a4e" />  
+<br>
 
+- 入力しないとか、入力した郵便番号が存在しない場合  
+<img src="https://github.com/user-attachments/assets/9dea7698-a73f-4759-bdfa-74a1b40b2a4e" />  
+<br>
+
+📄 [画面仕様書を見る（Google Sheet）](https://docs.google.com/spreadsheets/d/1Oux5XXHSU-IN-z_ANuXZMDzC9TcMDJfK3prxNJUfHBw/edit?gid=0#gid=0)
 </details>
+
+---
 
 <details>
 <summary>🔐 ログイン画面</summary>
-<br>-ログイン成功<br>
-<img src="https://github.com/user-attachments/assets/604c81bd-b785-4ac2-bd0a-550f764740b3" />  <br><br>
--ログイン失敗<br>
-<img src="https://github.com/user-attachments/assets/ad69c9b4-0433-42c6-a9be-6763996a3e7c" />  <br><br>
+<br>
 
-📄 [（Google Sheet）](https://docs.google.com/spreadsheets/d/1SXXUprHHZidPBEh9RtzKgrSBP-abRFdkofEKEnj3xvQ/edit?gid=0#gid=0)
+- ログイン成功  
+<img src="https://github.com/user-attachments/assets/604c81bd-b785-4ac2-bd0a-550f764740b3" />  
+<br>
 
+- ログイン失敗  
+<img src="https://github.com/user-attachments/assets/ad69c9b4-0433-42c6-a9be-6763996a3e7c" />  
+<br>
+
+📄 [画面仕様書を見る（Google Sheet）](https://docs.google.com/spreadsheets/d/1SXXUprHHZidPBEh9RtzKgrSBP-abRFdkofEKEnj3xvQ/edit?gid=0#gid=0)
 </details>
+
+---
 
 <details>
 <summary>🏠 メイン画面</summary>
+<br>
 
-<img src="https://github.com/user-attachments/assets/0011a3bb-fc24-4258-afa0-6e52f2ce0917" />  <br>
-📄 [（Google Sheet）](https://docs.google.com/spreadsheets/d/1uzQ8i2kqknaoUJi-BggIRW7yA344FJKcZH_Uu5QwaFs/edit?gid=62595112#gid=62595112)
+<img src="https://github.com/user-attachments/assets/0011a3bb-fc24-4258-afa0-6e52f2ce0917" />  
+<br>
 
+📄 [画面仕様書を見る（Google Sheet）](https://docs.google.com/spreadsheets/d/1uzQ8i2kqknaoUJi-BggIRW7yA344FJKcZH_Uu5QwaFs/edit?gid=62595112#gid=62595112)
 </details>
+
+---
 
 <details>
 <summary>🛠 会員情報編集画面</summary>
+<br>
 
-<img src="https://github.com/user-attachments/assets/4c4a6856-8a30-4273-91eb-1928bf97f8fe" />  <br>
-📄 [（Google Sheet）](https://docs.google.com/spreadsheets/d/1Ie9tur_m7OD7j4M5gyH5azxpBaX7AYuRgJ3Ped8Xq_c/edit?gid=0#gid=0)
+<img src="https://github.com/user-attachments/assets/4c4a6856-8a30-4273-91eb-1928bf97f8fe" />  
+<br>
 
+📄 [画面仕様書を見る（Google Sheet）](https://docs.google.com/spreadsheets/d/1Ie9tur_m7OD7j4M5gyH5azxpBaX7AYuRgJ3Ped8Xq_c/edit?gid=0#gid=0)
 </details>
+
+---
 
 <details>
 <summary>🏦 口座開設画面</summary>
-<br>-開設成功<br>
-<img src="https://github.com/user-attachments/assets/276bde02-efa1-4bf2-8885-7b34576ee979" /> <br><br>
--パスワードを入力しないとか、パスワードの設定が間違った場合。
-<img src="https://github.com/user-attachments/assets/3adc9065-02a3-45f2-ae53-961e10aa6f00" /><br><br>
--口座がすでに二つある場合。
-<img src="https://github.com/user-attachments/assets/261abf74-f30f-417b-bfaa-05a7e467bf43" /><br>
-
 <br>
-📄 [（Google Sheet）](https://docs.google.com/spreadsheets/d/1A85k9rVbdjujobfqciOWPuYqS2uYYHyKKf7av-CmGOs/edit?gid=0#gid=0)
 
+- 開設成功  
+<img src="https://github.com/user-attachments/assets/276bde02-efa1-4bf2-8885-7b34576ee979" />  
+<br>
+
+- パスワードを入力しない・設定が間違っている場合  
+<img src="https://github.com/user-attachments/assets/3adc9065-02a3-45f2-ae53-961e10aa6f00" />  
+<br>
+
+- 口座がすでに二つある場合  
+<img src="https://github.com/user-attachments/assets/261abf74-f30f-417b-bfaa-05a7e467bf43" />  
+<br>
+
+📄 [画面仕様書を見る（Google Sheet）](https://docs.google.com/spreadsheets/d/1A85k9rVbdjujobfqciOWPuYqS2uYYHyKKf7av-CmGOs/edit?gid=0#gid=0)
 </details>
+
+---
 
 <details>
 <summary>💸 振込画面</summary>
-<br>-振込成功<br>
-<img src="https://github.com/user-attachments/assets/75104176-7e79-4d68-9b90-f987da8911b5" />  <br><br>
--残高が足りなかった場合。<br>
-<img src="https://github.com/user-attachments/assets/6f1786af-a4c1-4e83-9247-93d2540a70a6" />　<br><br>
--相手の口座番号が間違った場合。
-<img src="https://github.com/user-attachments/assets/6ee49404-54bc-4120-b015-9a4d805e7330" />　<br><br>
- -パスワードが間違った場合。
-<img src="https://github.com/user-attachments/assets/0a9eb2f1-1df1-433b-bd01-3660cb5c796e" />　<br><br>
- 
-📄 [（Google Sheet）](https://docs.google.com/spreadsheets/d/1TUS2qzg7EEWoNS2kyuT1P0upgMGd7rN-N7HLVI2nfgo/edit?gid=0#gid=0)
+<br>
 
+- 振込成功  
+<img src="https://github.com/user-attachments/assets/75104176-7e79-4d68-9b90-f987da8911b5" />  
+<br>
+
+- 残高が足りなかった場合  
+<img src="https://github.com/user-attachments/assets/6f1786af-a4c1-4e83-9247-93d2540a70a6" />  
+<br>
+
+- 相手の口座番号が間違っていた場合  
+<img src="https://github.com/user-attachments/assets/6ee49404-54bc-4120-b015-9a4d805e7330" />  
+<br>
+
+- パスワードが間違っていた場合  
+<img src="https://github.com/user-attachments/assets/0a9eb2f1-1df1-433b-bd01-3660cb5c796e" />  
+<br>
+
+📄 [画面仕様書を見る（Google Sheet）](https://docs.google.com/spreadsheets/d/1TUS2qzg7EEWoNS2kyuT1P0upgMGd7rN-N7HLVI2nfgo/edit?gid=0#gid=0)
 </details>
+
+---
 
 <details>
 <summary>📊 取引履歴画面</summary>
+<br>
 
-<img src="https://github.com/user-attachments/assets/17b107b7-b7a3-4796-84de-1d443b311ea2" />  <br>
-📄 [（Google Sheet）](https://docs.google.com/spreadsheets/d/1Mizwa1XWfeLWeNwP_A-yFE1o5EnixtR3CLz3_6DUn9s/edit?gid=0#gid=0)
+<img src="https://github.com/user-attachments/assets/17b107b7-b7a3-4796-84de-1d443b311ea2" />  
+<br>
 
+📄 [画面仕様書を見る（Google Sheet）](https://docs.google.com/spreadsheets/d/1Mizwa1XWfeLWeNwP_A-yFE1o5EnixtR3CLz3_6DUn9s/edit?gid=0#gid=0)
 </details>
+
+---
 
 <details>
 <summary>👤 マイページ</summary>
+<br>
 
-<img src="https://github.com/user-attachments/assets/c4f46cbd-8ad0-4238-a564-17aa6e5e6e83" />  <br>
-📄 [（Google Sheet）](https://docs.google.com/spreadsheets/d/1rhVuuzdr6RTq3veOHmWOSELFM8Xt2p_jSyAzWE9FEko/edit?gid=0#gid=0)
+<img src="https://github.com/user-attachments/assets/c4f46cbd-8ad0-4238-a564-17aa6e5e6e83" />  
+<br>
 
+📄 [画面仕様書を見る（Google Sheet）](https://docs.google.com/spreadsheets/d/1rhVuuzdr6RTq3veOHmWOSELFM8Xt2p_jSyAzWE9FEko/edit?gid=0#gid=0)
 </details>
+
+---
 
 <details>
 <summary>🪧 ナビバ（ナビゲーションバー）</summary>
+<br>
 
-<img src="https://github.com/user-attachments/assets/d311f8d0-bb0b-4469-b067-a43118fc5700" /> 
-<img src="https://github.com/user-attachments/assets/e4cfff9d-af2a-4681-a8fc-2aa5579080fb" /> 
- <br>
-📄 [（Google Sheet）](https://docs.google.com/spreadsheets/d/1CFtX6bLJUVxWQFGSjU5B5cPnsnZKP-GiGaxRqmP4Lbk/edit?gid=0#gid=0)
+<img src="https://github.com/user-attachments/assets/d311f8d0-bb0b-4469-b067-a43118fc5700" />  
+<img src="https://github.com/user-attachments/assets/e4cfff9d-af2a-4681-a8fc-2aa5579080fb" />  
+<br>
 
+📄 [画面仕様書を見る（Google Sheet）](https://docs.google.com/spreadsheets/d/1CFtX6bLJUVxWQFGSjU5B5cPnsnZKP-GiGaxRqmP4Lbk/edit?gid=0#gid=0)
 </details>
+
+---
+
 <details>
 <summary>🚫 エラー</summary>
+<br>
 
-<img src="https://github.com/user-attachments/assets/d4865e44-689b-4155-b08c-724dcaacded3" />  <br>
-
+<img src="https://github.com/user-attachments/assets/d4865e44-689b-4155-b08c-724dcaacded3" />  
 </details>
-<br><br>
+
+<br>
 
 ## 🤜🤛 開発者
 - ソルグァンジン (https://github.com/SeolGwangzin)
