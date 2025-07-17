@@ -52,7 +52,7 @@ Spring BootとSpring Securityを活用した銀行アプリケーションです
 ![Spring Security](https://img.shields.io/badge/Spring_Security-6DB33F?logo=springsecurity&logoColor=white)
 ![H2 Database](https://img.shields.io/badge/H2-Database-blue?logo=h2&logoColor=white)
 ![MyBatis](https://img.shields.io/badge/MyBatis-DB1F29?logo=mybatis&logoColor=white)
-![JUnit](https://img.shields.io/badge/JUnit-5-25A162?logo=junit5&logoColor=white)
+![JUnit](https://img.shields.io/badge/JUnit-25A162?logo=junit&logoColor=white)
 ![Thymeleaf](https://img.shields.io/badge/Thymeleaf-005F0F?logo=thymeleaf&logoColor=white)
 
 <br><br>
