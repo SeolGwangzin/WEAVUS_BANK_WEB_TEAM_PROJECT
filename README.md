@@ -57,9 +57,8 @@ Spring BootとSpring Securityを活用した銀行アプリケーションです
 
 <br><br>
 
-## 🖥 画面構成
 
-<br>
+## 🖥 画面構成
 
 <details>
 <summary><strong>📝 会員登録画面</strong></summary>
@@ -299,6 +298,7 @@ Spring BootとSpring Securityを活用した銀行アプリケーションです
 </details>
 
 <br>
+
 
 ## 🤜🤛 開発者
 - ソルグァンジン (https://github.com/SeolGwangzin)
