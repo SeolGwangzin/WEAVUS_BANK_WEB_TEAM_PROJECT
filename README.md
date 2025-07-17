@@ -60,83 +60,74 @@ Spring BootとSpring Securityを活用した銀行アプリケーションです
 ## 🖥 画面構成
 
 <details>
-<summary>📝 会員登録画面（Google Sheet）</summary>
+<summary>📝 会員登録画面</summary>
 
-[Google Sheet](https://docs.google.com/spreadsheets/d/1Oux5XXHSU-IN-z_ANuXZMDzC9TcMDJfK3prxNJUfHBw/edit?gid=0#gid=0)  
-<br>
-<img src="https://github.com/user-attachments/assets/9168273b-1659-4735-bdfa-74a1b40b2a4e" />
-
-</details>
-
-<details>
-<summary>🔐 ログイン画面（Google Sheet）</summary>
-
-[Google Sheet](https://docs.google.com/spreadsheets/d/1SXXUprHHZidPBEh9RtzKgrSBP-abRFdkofEKEnj3xvQ/edit?gid=0#gid=0)  
-<br>
-<img src="https://github.com/user-attachments/assets/604c81bd-b785-4ac2-bd0a-550f764740b3" />
+<img src="https://github.com/user-attachments/assets/9168273b-1659-4735-bdfa-74a1b40b2a4e" />  
+📄 [会員登録画面仕様（Google Sheet）](https://docs.google.com/spreadsheets/d/1Oux5XXHSU-IN-z_ANuXZMDzC9TcMDJfK3prxNJUfHBw/edit?gid=0#gid=0)
 
 </details>
 
 <details>
-<summary>🏠 メイン画面（Google Sheet）</summary>
+<summary>🔐 ログイン画面</summary>
 
-[Google Sheet](https://docs.google.com/spreadsheets/d/1uzQ8i2kqknaoUJi-BggIRW7yA344FJKcZH_Uu5QwaFs/edit?gid=62595112#gid=62595112)  
-<br>
-<img src="https://github.com/user-attachments/assets/0011a3bb-fc24-4258-afa0-6e52f2ce0917" />
-
-</details>
-
-<details>
-<summary>🛠 会員情報編集画面（Google Sheet）</summary>
-
-[Google Sheet](https://docs.google.com/spreadsheets/d/1Ie9tur_m7OD7j4M5gyH5azxpBaX7AYuRgJ3Ped8Xq_c/edit?gid=0#gid=0)  
-<br>
-<img src="https://github.com/user-attachments/assets/4c4a6856-8a30-4273-91eb-1928bf97f8fe" />
+<img src="https://github.com/user-attachments/assets/604c81bd-b785-4ac2-bd0a-550f764740b3" />  
+📄 [ログイン画面仕様（Google Sheet）](https://docs.google.com/spreadsheets/d/1SXXUprHHZidPBEh9RtzKgrSBP-abRFdkofEKEnj3xvQ/edit?gid=0#gid=0)
 
 </details>
 
 <details>
-<summary>🏦 口座開設画面（Google Sheet）</summary>
+<summary>🏠 メイン画面</summary>
 
-[Google Sheet](https://docs.google.com/spreadsheets/d/1A85k9rVbdjujobfqciOWPuYqS2uYYHyKKf7av-CmGOs/edit?gid=0#gid=0)  
-<br>
-<img src="https://github.com/user-attachments/assets/276bde02-efa1-4bf2-8885-7b34576ee979" />
-
-</details>
-
-<details>
-<summary>💸 振込画面（Google Sheet）</summary>
-
-[Google Sheet](https://docs.google.com/spreadsheets/d/1TUS2qzg7EEWoNS2kyuT1P0upgMGd7rN-N7HLVI2nfgo/edit?gid=0#gid=0)  
-<br>
-<img src="https://github.com/user-attachments/assets/75104176-7e79-4d68-9b90-f987da8911b5" />
+<img src="https://github.com/user-attachments/assets/0011a3bb-fc24-4258-afa0-6e52f2ce0917" />  
+📄 [メイン画面仕様（Google Sheet）](https://docs.google.com/spreadsheets/d/1uzQ8i2kqknaoUJi-BggIRW7yA344FJKcZH_Uu5QwaFs/edit?gid=62595112#gid=62595112)
 
 </details>
 
 <details>
-<summary>📊 取引履歴画面（Google Sheet）</summary>
+<summary>🛠 会員情報編集画面</summary>
 
-[Google Sheet](https://docs.google.com/spreadsheets/d/1Mizwa1XWfeLWeNwP_A-yFE1o5EnixtR3CLz3_6DUn9s/edit?gid=0#gid=0)  
-<br>
-<img src="https://github.com/user-attachments/assets/17b107b7-b7a3-4796-84de-1d443b311ea2" />
-
-</details>
-
-<details>
-<summary>👤 マイページ（Google Sheet）</summary>
-
-[Google Sheet](https://docs.google.com/spreadsheets/d/1rhVuuzdr6RTq3veOHmWOSELFM8Xt2p_jSyAzWE9FEko/edit?gid=0#gid=0)  
-<br>
-<img src="https://github.com/user-attachments/assets/c4f46cbd-8ad0-4238-a564-17aa6e5e6e83" />
+<img src="https://github.com/user-attachments/assets/4c4a6856-8a30-4273-91eb-1928bf97f8fe" />  
+📄 [会員情報編集仕様（Google Sheet）](https://docs.google.com/spreadsheets/d/1Ie9tur_m7OD7j4M5gyH5azxpBaX7AYuRgJ3Ped8Xq_c/edit?gid=0#gid=0)
 
 </details>
 
 <details>
-<summary>🪧 ナビバ（Google Sheet）</summary>
+<summary>🏦 口座開設画面</summary>
 
-[Google Sheet](https://docs.google.com/spreadsheets/d/1CFtX6bLJUVxWQFGSjU5B5cPnsnZKP-GiGaxRqmP4Lbk/edit?gid=0#gid=0)  
-<br>
-<img src="https://github.com/user-attachments/assets/d311f8d0-bb0b-4469-b067-a43118fc5700" />
+<img src="https://github.com/user-attachments/assets/276bde02-efa1-4bf2-8885-7b34576ee979" />  
+📄 [口座開設画面仕様（Google Sheet）](https://docs.google.com/spreadsheets/d/1A85k9rVbdjujobfqciOWPuYqS2uYYHyKKf7av-CmGOs/edit?gid=0#gid=0)
+
+</details>
+
+<details>
+<summary>💸 振込画面</summary>
+
+<img src="https://github.com/user-attachments/assets/75104176-7e79-4d68-9b90-f987da8911b5" />  
+📄 [振込画面仕様（Google Sheet）](https://docs.google.com/spreadsheets/d/1TUS2qzg7EEWoNS2kyuT1P0upgMGd7rN-N7HLVI2nfgo/edit?gid=0#gid=0)
+
+</details>
+
+<details>
+<summary>📊 取引履歴画面</summary>
+
+<img src="https://github.com/user-attachments/assets/17b107b7-b7a3-4796-84de-1d443b311ea2" />  
+📄 [取引履歴画面仕様（Google Sheet）](https://docs.google.com/spreadsheets/d/1Mizwa1XWfeLWeNwP_A-yFE1o5EnixtR3CLz3_6DUn9s/edit?gid=0#gid=0)
+
+</details>
+
+<details>
+<summary>👤 マイページ</summary>
+
+<img src="https://github.com/user-attachments/assets/c4f46cbd-8ad0-4238-a564-17aa6e5e6e83" />  
+📄 [マイページ仕様（Google Sheet）](https://docs.google.com/spreadsheets/d/1rhVuuzdr6RTq3veOHmWOSELFM8Xt2p_jSyAzWE9FEko/edit?gid=0#gid=0)
+
+</details>
+
+<details>
+<summary>🪧 ナビバ（ナビゲーションバー）</summary>
+
+<img src="https://github.com/user-attachments/assets/d311f8d0-bb0b-4469-b067-a43118fc5700" />  
+📄 [ナビバ仕様（Google Sheet）](https://docs.google.com/spreadsheets/d/1CFtX6bLJUVxWQFGSjU5B5cPnsnZKP-GiGaxRqmP4Lbk/edit?gid=0#gid=0)
 
 </details>
 <br><br>
