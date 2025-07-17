@@ -93,7 +93,7 @@ Spring BootとSpring Securityを活用した銀行アプリケーションです
 
 <details>
 <summary>🏦 口座開設画面</summary>
--開設成功<br>
+<br>-開設成功<br>
 <img src="https://github.com/user-attachments/assets/276bde02-efa1-4bf2-8885-7b34576ee979" /> <br><br>
 -パスワードを入力しなかったとかパスワードの設定が間違った場合。
 <img src="https://github.com/user-attachments/assets/3adc9065-02a3-45f2-ae53-961e10aa6f00" /><br><br>
@@ -107,9 +107,9 @@ Spring BootとSpring Securityを活用した銀行アプリケーションです
 
 <details>
 <summary>💸 振込画面</summary>
--振込成功<br>
+<br>-振込成功<br>
 <img src="https://github.com/user-attachments/assets/75104176-7e79-4d68-9b90-f987da8911b5" />  <br><br>
--残高が足りなかった場合。
+-残高が足りなかった場合。<br>
 <img src="https://github.com/user-attachments/assets/6f1786af-a4c1-4e83-9247-93d2540a70a6" />　<br><br>
 -相手の口座番号が間違った場合。
 <img src="https://github.com/user-attachments/assets/6ee49404-54bc-4120-b015-9a4d805e7330" />　<br><br>
