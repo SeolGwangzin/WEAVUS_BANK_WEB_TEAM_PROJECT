@@ -56,9 +56,14 @@ Spring BootとSpring Securityを活用した銀行アプリケーションです
 
 ## 🖥 画面構成
 
+| 📝 会員登録画面 | [Google Sheet](https://docs.google.com/spreadsheets/d/1Oux5XXHSU-IN-z_ANuXZMDzC9TcMDJfK3prxNJUfHBw/edit?gid=0#gid=0) |
+
+
 | 🔐 ログイン画面 | [Google Sheet](https://docs.google.com/spreadsheets/d/1SXXUprHHZidPBEh9RtzKgrSBP-abRFdkofEKEnj3xvQ/edit?gid=0#gid=0) |
 
-| 📝 会員登録画面 | [Google Sheet](https://docs.google.com/spreadsheets/d/1Oux5XXHSU-IN-z_ANuXZMDzC9TcMDJfK3prxNJUfHBw/edit?gid=0#gid=0) |
+
+![-Chrome2025-07-1709-35-40-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/604c81bd-b785-4ac2-bd0a-550f764740b3)
+
 
 | 🏠 メイン画面 | [Google Sheet](https://docs.google.com/spreadsheets/d/1uzQ8i2kqknaoUJi-BggIRW7yA344FJKcZH_Uu5QwaFs/edit?gid=62595112#gid=62595112) |
 
