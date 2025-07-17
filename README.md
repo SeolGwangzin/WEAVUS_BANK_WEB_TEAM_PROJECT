@@ -71,11 +71,6 @@ Spring BootとSpring Securityを活用した銀行アプリケーションです
 ![-Chrome2025-07-1709-37-09-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/0011a3bb-fc24-4258-afa0-6e52f2ce0917)<br>
 
 
-| 👤 マイページ | [Google Sheet](https://docs.google.com/spreadsheets/d/1rhVuuzdr6RTq3veOHmWOSELFM8Xt2p_jSyAzWE9FEko/edit?gid=0#gid=0) |
-
-![MYPAGE-Chrome2025-07-1709-45-19-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/c4f46cbd-8ad0-4238-a564-17aa6e5e6e83)<br>
-
-
 | 🛠 会員情報編集画面 | [Google Sheet](https://docs.google.com/spreadsheets/d/1Ie9tur_m7OD7j4M5gyH5azxpBaX7AYuRgJ3Ped8Xq_c/edit?gid=0#gid=0) |
 
 ![MYPAGE-Chrome2025-07-1709-45-44-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/4c4a6856-8a30-4273-91eb-1928bf97f8fe)<br>
@@ -94,6 +89,16 @@ Spring BootとSpring Securityを活用した銀行アプリケーションです
 | 📊 取引履歴画面 | [Google Sheet](https://docs.google.com/spreadsheets/d/1Mizwa1XWfeLWeNwP_A-yFE1o5EnixtR3CLz3_6DUn9s/edit?gid=0#gid=0) |
 
 ![-Chrome2025-07-1709-44-16-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/17b107b7-b7a3-4796-84de-1d443b311ea2)<br>
+
+
+| 👤 マイページ | [Google Sheet](https://docs.google.com/spreadsheets/d/1rhVuuzdr6RTq3veOHmWOSELFM8Xt2p_jSyAzWE9FEko/edit?gid=0#gid=0) |
+
+![MYPAGE-Chrome2025-07-1709-45-19-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/c4f46cbd-8ad0-4238-a564-17aa6e5e6e83)<br>
+
+
+| 🪧 ナビバ | [Google Sheet](https://docs.google.com/spreadsheets/d/1CFtX6bLJUVxWQFGSjU5B5cPnsnZKP-GiGaxRqmP4Lbk/edit?gid=0#gid=0) |
+
+![MYPAGE-Chrome2025-07-1709-56-50-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/d311f8d0-bb0b-4469-b067-a43118fc5700)
 
 
 <br><br>
