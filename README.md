@@ -72,8 +72,11 @@ Spring BootとSpring Securityを活用した銀行アプリケーションです
 
 <details>
 <summary>🔐 ログイン画面</summary>
+<br>-ログイン成功<br>
+<img src="https://github.com/user-attachments/assets/604c81bd-b785-4ac2-bd0a-550f764740b3" />  <br><br>
+-ログイン失敗<br>
+<img src="https://github.com/user-attachments/assets/ad69c9b4-0433-42c6-a9be-6763996a3e7c" />  <br><br>
 
-<img src="https://github.com/user-attachments/assets/604c81bd-b785-4ac2-bd0a-550f764740b3" />  <br>
 📄 [（Google Sheet）](https://docs.google.com/spreadsheets/d/1SXXUprHHZidPBEh9RtzKgrSBP-abRFdkofEKEnj3xvQ/edit?gid=0#gid=0)
 
 </details>
