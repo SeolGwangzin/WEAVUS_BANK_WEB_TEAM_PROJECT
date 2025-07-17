@@ -57,8 +57,7 @@ Spring BootとSpring Securityを活用した銀行アプリケーションです
 
 <br><br>
 
-🖥️ 画面構成
-各画面の構成と主要なケースは以下の通りです。
+## 🖥 画面構成
 
 <br>
 
@@ -267,8 +266,8 @@ Spring BootとSpring Securityを活用した銀行アプリケーションです
 <table>
 <thead>
 <tr>
-<th style="text-align: center;">ログアウト状態</th>
 <th style="text-align: center;">ログイン状態</th>
+<th style="text-align: center;">ログアウト状態</th>
 <th style="text-align: center;">設計書</th>
 </tr>
 </thead>
