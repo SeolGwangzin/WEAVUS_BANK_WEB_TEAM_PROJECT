@@ -1,5 +1,5 @@
 
-<img width="406" height="280" alt="logo" src="https://github.com/user-attachments/assets/d5d2816b-f148-444c-b8eb-cf5b9405aa3a" /><br>
+<img width="256" height="180" alt="logo" src="https://github.com/user-attachments/assets/d5d2816b-f148-444c-b8eb-cf5b9405aa3a" /><br>
 
 # 💸 WEAVUS_BANK_WEB_TEAM_PROJECT（Spring Boot）
 
