@@ -145,6 +145,12 @@ Spring BootとSpring Securityを活用した銀行アプリケーションです
 📄 [（Google Sheet）](https://docs.google.com/spreadsheets/d/1CFtX6bLJUVxWQFGSjU5B5cPnsnZKP-GiGaxRqmP4Lbk/edit?gid=0#gid=0)
 
 </details>
+<details>
+<summary>🚫 エラー</summary>
+
+<img src="https://github.com/user-attachments/assets/d4865e44-689b-4155-b08c-724dcaacded3" />  <br>
+
+</details>
 <br><br>
 
 ## 🤜🤛 開発者
