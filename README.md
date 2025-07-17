@@ -61,9 +61,12 @@ Spring BootとSpring Securityを活用した銀行アプリケーションです
 
 <details>
 <summary>📝 会員登録画面</summary>
+<br>-会員登録成功<br>
+<img src="https://github.com/user-attachments/assets/9168273b-1659-4735-bdfa-74a1b40b2a4e" />  <br><br>
+-入力しないとか、入力した郵便番号が存在しない場合。
+<img src="https://github.com/user-attachments/assets/9dea7698-a73f-4759-a99c-2212176bbd22" />  <br><br>
 
-<img src="https://github.com/user-attachments/assets/9168273b-1659-4735-bdfa-74a1b40b2a4e" />  <br>
-📄 [（Google Sheet）](https://docs.google.com/spreadsheets/d/1Oux5XXHSU-IN-z_ANuXZMDzC9TcMDJfK3prxNJUfHBw/edit?gid=0#gid=0)
+ 📄 [（Google Sheet）](https://docs.google.com/spreadsheets/d/1Oux5XXHSU-IN-z_ANuXZMDzC9TcMDJfK3prxNJUfHBw/edit?gid=0#gid=0)
 
 </details>
 
@@ -95,7 +98,7 @@ Spring BootとSpring Securityを活用した銀行アプリケーションです
 <summary>🏦 口座開設画面</summary>
 <br>-開設成功<br>
 <img src="https://github.com/user-attachments/assets/276bde02-efa1-4bf2-8885-7b34576ee979" /> <br><br>
--パスワードを入力しなかったとかパスワードの設定が間違った場合。
+-パスワードを入力しないとか、パスワードの設定が間違った場合。
 <img src="https://github.com/user-attachments/assets/3adc9065-02a3-45f2-ae53-961e10aa6f00" /><br><br>
 -口座がすでに二つある場合。
 <img src="https://github.com/user-attachments/assets/261abf74-f30f-417b-bfaa-05a7e467bf43" /><br>
