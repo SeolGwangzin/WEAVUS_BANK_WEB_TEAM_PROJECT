@@ -94,7 +94,13 @@ Spring BootとSpring Securityを活用した銀行アプリケーションです
 <details>
 <summary>🏦 口座開設画面</summary>
 
-<img src="https://github.com/user-attachments/assets/276bde02-efa1-4bf2-8885-7b34576ee979" />  <br>
+<img src="https://github.com/user-attachments/assets/276bde02-efa1-4bf2-8885-7b34576ee979" /> <br>
+入力しなかったとかパスワードの設定が間違った場合。
+<img src="https://github.com/user-attachments/assets/3adc9065-02a3-45f2-ae53-961e10aa6f00" /><br>
+口座がすでに二つある場合。
+<img src="https://github.com/user-attachments/assets/261abf74-f30f-417b-bfaa-05a7e467bf43" /><br>
+
+<br>
 📄 [（Google Sheet）](https://docs.google.com/spreadsheets/d/1A85k9rVbdjujobfqciOWPuYqS2uYYHyKKf7av-CmGOs/edit?gid=0#gid=0)
 
 </details>
