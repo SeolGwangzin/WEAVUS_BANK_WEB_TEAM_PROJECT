@@ -1,3 +1,6 @@
+
+<img width="1556" height="1021" alt="logo" src="https://github.com/user-attachments/assets/d5d2816b-f148-444c-b8eb-cf5b9405aa3a" /><br>
+
 # 💸 WEAVUS_BANK_WEB_TEAM_PROJECT（Spring Boot）
 
 Spring BootとSpring Securityを活用した銀行アプリケーションです。会員登録・ログイン・口座開設・振込・取引履歴表示など、基本的な銀行機能に加え、為替レート・郵便番号・金融ニュースの外部APIも活用しています。
