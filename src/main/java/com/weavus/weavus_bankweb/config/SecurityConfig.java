@@ -27,7 +27,7 @@ public class SecurityConfig {
                 // HTTPリクエストに対するアクセス権限の設定
                 .authorizeHttpRequests(auth -> auth
                         // 以下のパスは誰でもアクセスできるように許可します。
-                        .requestMatchers("/login", "/register", "/myPage", "/css/**", "/js/**", "/image/**").permitAll()
+                        .requestMatchers("/login", "/register", "/myPage", "/css/**", "/error", "/js/**", "/image/**").permitAll()
                         // 上記以外のすべてのリクエストは、必ず認証（ログイン）を経る必要があります。
                         .anyRequest().authenticated()
                 )

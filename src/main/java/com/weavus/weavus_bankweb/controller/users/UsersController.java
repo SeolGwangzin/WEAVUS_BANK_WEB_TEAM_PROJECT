@@ -56,6 +56,7 @@ public class UsersController {
         return "index";
     }
 
+    //SPRING SECURITYが代わりにしてくれる。
 //    @PostMapping("/login")
 //    public String handleLogin(LoginForm loginForm, HttpSession session, Model model) {
 //        boolean success = usersService.handleLogin(loginForm);  //ログイン判断
