@@ -25,7 +25,7 @@ Spring BootとSpring Securityを活用した銀行アプリケーションです
 <br><br>
 
 
-### 🖼 ER図
+## 🖼 ER図
 
 <img src="https://github.com/user-attachments/assets/97eb16e9-beef-4abe-a4e6-c57f815116c3"/>
 
