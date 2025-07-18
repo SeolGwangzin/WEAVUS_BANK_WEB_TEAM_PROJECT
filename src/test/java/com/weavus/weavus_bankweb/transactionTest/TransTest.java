@@ -1,7 +1,6 @@
 package com.weavus.weavus_bankweb.transactionTest;
 
 import com.weavus.weavus_bankweb.entity.transactions.TransactionsEntity;
-import com.weavus.weavus_bankweb.entity.users.UsersEntity;
 import com.weavus.weavus_bankweb.service.transactions.TransactionsService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +19,6 @@ public class TransTest {
     @Autowired
     TransactionsService transService;
 
-//    @BeforeEach
-//    void setUp() {
-//
-//    }
 
     @Test
     //ERROR TEST

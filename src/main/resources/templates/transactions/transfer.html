@@ -45,7 +45,6 @@
         <h2 class="text-center mb-4">振込</h2>
         <form th:action="@{/trans/create}" th:object="${transaction}" method="post" autocomplete="off">
 
-            <!-- 각 항목의 하단 여백을 mb-3에서 mb-4로 수정 -->
             <div class="input-group mb-4">
                 <label class="input-group-text" for="from_account_number" style="width: 140px;">振込元口座</label>
                 <select class="form-select" id="from_account_number" th:field="*{from_account_number}">
