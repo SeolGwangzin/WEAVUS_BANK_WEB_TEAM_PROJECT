@@ -12,18 +12,14 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class peopleTest {
+public class PeopleTest {
     private static final String TARGET_URL = "http://localhost:8080/login";
 
     private static final int VIRTUAL_USERS = 10000;
 
     private static final int REQUESTS_PER_USER = 10;
 
-
-
-
     @Test
-    @DisplayName("간단한 동시 접속 부하 테스트")
     void runSimpleLoadTest() throws InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
 
