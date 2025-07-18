@@ -20,10 +20,6 @@ public class TransTest {
     @Autowired
     TransactionsService transService;
 
-//    @BeforeEach
-//    void setUp() {
-//
-//    }
 
     @Test
     //ERROR TEST
