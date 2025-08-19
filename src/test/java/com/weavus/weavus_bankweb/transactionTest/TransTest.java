@@ -31,15 +31,11 @@ public class TransTest {
                 .build();
 
         //同じ口座番号を入れる場合
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> {
-            transService.createTransaction(transactionsEntity, "1234");
-        });
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> transService.createTransaction(transactionsEntity, "1234"));
         System.out.println("error メッセージ: " + e.getMessage());
 
         //PASSWORDが間違った場合
-        e = assertThrows(IllegalArgumentException.class, () -> {
-            transService.createTransaction(transactionsEntity, "12345678");
-        });
+        e = assertThrows(IllegalArgumentException.class, () -> transService.createTransaction(transactionsEntity, "12345678"));
         System.out.println("error メッセージ: " + e.getMessage());
 
         //口座番号先が間違った場合
