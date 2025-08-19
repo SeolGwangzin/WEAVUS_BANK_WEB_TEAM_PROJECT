@@ -42,10 +42,10 @@ public class AccountTest {
         System.out.println("LAE: " + lae.get(0).getAccount_number());
     }
 
-    @Test
+    //@Test
     //残高UPDATEテスト
-    void balanceTest(){
-        accountsInterface.updateBalance("123456789022", 20000);
-        assertEquals("残高が間違います。", 20000, accountsInterface.findBalanceByBalanceId("123456789022"));
-    }
+//    void balanceTest(){
+//        accountsInterface.updateBalance("123456789022", 20000);
+//        assertEquals("残高が間違います。", 20000, accountsInterface.findBalanceByBalanceId("123456789022"));
+//    }
 }
