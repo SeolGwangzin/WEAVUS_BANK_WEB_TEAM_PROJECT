@@ -1,6 +1,5 @@
 package com.weavus.weavus_bankweb.transactionTest;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.net.URI;
