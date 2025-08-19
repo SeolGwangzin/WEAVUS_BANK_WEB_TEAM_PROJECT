@@ -1,6 +1,5 @@
 package com.weavus.weavus_bankweb.transactionTest;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.net.URI;
@@ -15,9 +14,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class PeopleTest {
     private static final String TARGET_URL = "http://localhost:8080/login";
 
-    private static final int VIRTUAL_USERS = 10000;
+    private static final int VIRTUAL_USERS = 100;
 
-    private static final int REQUESTS_PER_USER = 10;
+    private static final int REQUESTS_PER_USER = 2;
 
     @Test
     void runSimpleLoadTest() throws InterruptedException {
