@@ -33,3 +33,13 @@ INSERT INTO accounts (
         '1234',
         '給料お貰うため'
        );
+
+INSERT INTO accounts (
+    user_id, account_number, balance, password, purpose
+)VALUES(
+           1,
+           '223456789012',
+           100000,
+           '1234',
+           '給料お貰うため'
+       );

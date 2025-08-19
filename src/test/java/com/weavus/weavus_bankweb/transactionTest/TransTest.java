@@ -24,8 +24,8 @@ public class TransTest {
     //ERROR TEST
     void transErrorTest(){
         TransactionsEntity transactionsEntity = TransactionsEntity.builder()
-                .from_account_number("223456789012")
-                .to_account_number("223456789012")
+                .from_account_number("123456789012")
+                .to_account_number("123456789012")
                 .amount(10000)
                 .note("TEST")
                 .build();
