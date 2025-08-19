@@ -32,7 +32,6 @@ public class TransactionsController {
     //振込画面に移動。
     @GetMapping("/create")
     public String createTransactionForm(Authentication authentication, Model model) {
-        System.out.println(((UsersEntity) authentication.getPrincipal()).getId() + "sadasdadad");
         //List<String> accountList = accountsService.getAllAccount(((UsersEntity) session.getAttribute("loginUser")).getId());
         List<String> accountList = accountsService.getAllAccount(((UsersEntity) authentication.getPrincipal()).getId());
 
